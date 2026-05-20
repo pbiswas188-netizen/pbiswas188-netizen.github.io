@@ -281,10 +281,11 @@ body{
    NAVIGATION — Wide on land → pill on scroll
    ===================== */
 .nav-bar{
-  position:sticky;top:12px;z-index:100;
+  position:sticky;top:16px;z-index:100;
   padding:0 20px;
   background:transparent;
   border:none;
+  margin-top:16px;
 }
 .nav-inner{
   /* Wide default — nearly full content width */
@@ -357,22 +358,20 @@ body{
 }
 .nav-right{display:flex;align-items:center;gap:7px;position:relative;z-index:3;}
 
-/* Available badge — GREEN (available for work) */
+/* Available label — plain, no button chrome or hover */
 .avail{
   display:inline-flex;align-items:center;gap:7px;
-  padding:5px 12px;
-  background:rgba(22,163,74,0.10);
-  backdrop-filter:var(--glass-blur-sm);
-  -webkit-backdrop-filter:var(--glass-blur-sm);
-  border:1px solid rgba(22,163,74,0.28);
-  border-radius:var(--radius-full);
-  box-shadow:0 1.5px 0 rgba(255,255,255,0.75) inset,0 4px 12px rgba(22,163,74,0.08);
+  padding:5px 4px;
+  background:none;
+  border:none;
+  border-radius:0;
+  box-shadow:none;
   font-size:12px;font-weight:500;
   color:#16a34a;
   white-space:nowrap;
-  transition:all var(--dur-fast) var(--ease-spr);
+  cursor:default;
+  pointer-events:none;
 }
-.avail:hover{background:rgba(22,163,74,0.16);transform:translateY(-1px);}
 .dot{
   width:6.5px;height:6.5px;
   background:#16a34a;          /* green dot */
@@ -1019,19 +1018,16 @@ body{
 .site-footer{
   display:flex;align-items:center;justify-content:space-between;
   padding:20px 48px;
-  background:var(--glass);
-  backdrop-filter:var(--glass-blur-md);
-  -webkit-backdrop-filter:var(--glass-blur-md);
-  border-top:1px solid var(--glass-border);
-  box-shadow:0 -1px 0 rgba(255,255,255,0.6) inset,0 -20px 60px rgba(0,56,140,0.05);
+  background:none;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+  border-top:1px solid var(--border);
+  box-shadow:none;
   flex-wrap:wrap;gap:12px;
   width:100%;
   position:relative;
 }
-.site-footer::before{
-  content:'';position:absolute;top:0;left:5%;right:5%;
-  height:1px;background:var(--iris-grad);pointer-events:none;
-}
+.site-footer::before{ display:none; }
 .footer-l{display:flex;flex-direction:column;gap:4px;}
 .f-copy{
   font-size:13px;                   /* Apple Footnote: 13pt */
@@ -1273,10 +1269,10 @@ body{
   font-weight:700;
   letter-spacing:-.03em;
   line-height:1;
-  /* Green gradient — signals positive outcomes */
-  background-image:linear-gradient(135deg,#15803d 10%,#22c55e 100%);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
+  background-image:none;
+  -webkit-background-clip:unset;background-clip:unset;
+  -webkit-text-fill-color:unset;
+  color:#15803d;
   margin-bottom:7px;
   font-variant-numeric:tabular-nums;
   position:relative;z-index:2;
@@ -1296,7 +1292,9 @@ body{
   position:relative;z-index:2;
 }
 .dark .stat-num{
-  background-image:linear-gradient(135deg,#4ade80 10%,#86efac 100%);
+  background-image:none;
+  -webkit-text-fill-color:unset;
+  color:#4ade80;
 }
 .dark .stat-co{color:var(--text);}
 .stat-co a{
@@ -1377,6 +1375,38 @@ body{
   color:var(--text);
   margin-bottom:12px;
   position:relative;z-index:1;
+}
+/* Countdown */
+.countdown{
+  display:flex;align-items:center;justify-content:center;
+  gap:4px;margin:18px auto 20px;
+  position:relative;z-index:1;
+}
+.cd-unit{
+  display:flex;flex-direction:column;align-items:center;
+  min-width:52px;
+}
+.cd-num{
+  font-family:'Atkinson Hyperlegible Next',sans-serif;
+  font-size:clamp(28px,4vw,40px);
+  font-weight:700;
+  letter-spacing:-.03em;line-height:1;
+  color:var(--text);
+  font-variant-numeric:tabular-nums;
+}
+.cd-lbl{
+  font-size:10px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--text-3);margin-top:4px;
+}
+.cd-sep{
+  font-family:'Atkinson Hyperlegible Next',sans-serif;
+  font-size:clamp(22px,3vw,32px);
+  font-weight:700;
+  color:var(--text-3);
+  line-height:1;
+  margin-bottom:14px;
+  opacity:.4;
 }
 .notify-sub{
   font-size:15px;color:var(--text-2);
@@ -1721,7 +1751,7 @@ body::after{
 
       <p class="hero-role">
         <span class="icon"><svg width="13" height="13"><use href="#ico-person"></use></svg></span>
-        Product Designer &nbsp;·&nbsp; B2C &amp; Enterprise &nbsp;·&nbsp; 10 yrs
+        Product Designer &nbsp;·&nbsp; B2C &amp; Enterprise &nbsp;·&nbsp; +10 yrs
       </p>
 
       <h1 class="hero-h1">
@@ -1729,7 +1759,7 @@ body::after{
       </h1>
 
       <p class="hero-sub">
-        10 years turning <strong>complex problems</strong> into products people love — across B2C, enterprise, and everything in between.
+        +10 years turning <strong>complex problems</strong> into products people love — across B2C, enterprise, and everything in between.
       </p>
 
       <!-- STAT GRID — impact numbers as visual centrepiece -->
@@ -1756,19 +1786,6 @@ body::after{
         </div>
       </div>
 
-      <!-- BRAND STRIP — inside hero, after numbers (attribution) -->
-      <div class="brands-strip">
-        <p class="brands-lbl">Worked with teams at</p>
-        <div class="brands-row">
-          <span class="brand-name">Coursera</span>
-          <span class="brand-sep"></span>
-          <span class="brand-name">OLX Autos</span>
-          <span class="brand-sep"></span>
-          <span class="brand-name">Cars24</span>
-          <span class="brand-sep"></span>
-          <span class="brand-name">Darwinbox</span>
-        </div>
-      </div>
 
       <div class="cta-row">
         <a class="cta-p" href="https://calendly.com/p-biswas188/15min" target="_blank">
@@ -1933,6 +1950,16 @@ body::after{
         Launching soon
       </div>
       <h2 class="notify-h">Six deep dives, fully unlocked.</h2>
+      <!-- COUNTDOWN -->
+      <div class="countdown" id="countdown">
+        <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-lbl">Days</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-lbl">Hours</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-lbl">Mins</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-lbl">Secs</span></div>
+      </div>
       <p class="notify-sub">Process, decisions, trade-offs, and the numbers that followed. Follow to be first when it drops.</p>
       <div class="notify-actions">
         <a class="notify-cta" href="https://www.linkedin.com/in/pb188/" target="_blank">
@@ -2253,6 +2280,39 @@ setInterval(rotateWord, 3000);
   } else {
     els.forEach(animateCount);
   }
+})();
+
+/* =====================
+   COUNTDOWN TIMER — 1 week from page publish
+   Target: 2026-05-27 00:00:00 local time
+   ===================== */
+(function(){
+  const TARGET = new Date('2026-05-27T00:00:00').getTime();
+  const dEl = document.getElementById('cd-d');
+  const hEl = document.getElementById('cd-h');
+  const mEl = document.getElementById('cd-m');
+  const sEl = document.getElementById('cd-s');
+  const cdEl = document.getElementById('countdown');
+  if(!dEl) return;
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    const now = Date.now();
+    const diff = TARGET - now;
+    if(diff <= 0){
+      dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = '00';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    dEl.textContent = pad(d);
+    hEl.textContent = pad(h);
+    mEl.textContent = pad(m);
+    sEl.textContent = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
 })();
 </script>
 </body>
