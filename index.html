@@ -789,23 +789,27 @@ body{
 }
 .lock-chip .ms{font-size:14px;color:rgba(0,0,0,0.42);}
 
-/* ── Company badge — bottom-left of thumbnail ── */
+/* ── Company badge — top-left of thumbnail ── */
 .cthumb-co{
-  position:absolute;bottom:12px;left:14px;
-  background:rgba(255,255,255,0.65);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,0.86);
+  position:absolute;top:12px;left:14px;
+  background:rgba(255,255,255,0.72);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.90);
   border-radius:6px;
-  padding:3px 9px;
-  font-size:11px;font-weight:600;  /* Apple minimum 11pt; Semibold for badge ↑ from 10px/700 */
+  padding:3px 10px;
+  font-size:11px;font-weight:600;
   letter-spacing:.07em;text-transform:uppercase;
   line-height:1.18;
-  color:rgba(0,0,0,0.48);
+  color:rgba(0,0,0,0.70);
   pointer-events:none;
+  z-index:4;
 }
 
 /* ── Card body ── */
-.cbody{padding:14px 20px 22px;background:#ffffff;}
+.cbody{
+  padding:14px 20px 22px;background:#ffffff;
+  border-top:1px solid rgba(0,0,0,0.07);
+}
 
 /* Title — Apple Headline style: 17pt Semibold */
 .ctit{
@@ -856,7 +860,8 @@ body{
 .dark .ct-b{background:radial-gradient(ellipse at 66% 34%,rgba(59,130,246,0.26) 0%,rgba(59,130,246,0.10) 100%);}
 .dark .lock-chip{background:rgba(255,255,255,0.10);border-color:rgba(255,255,255,0.20);color:rgba(255,255,255,0.55);}
 .dark .lock-chip .ms{color:rgba(255,255,255,0.45);}
-.dark .cthumb-co{background:rgba(255,255,255,0.10);border-color:rgba(255,255,255,0.18);color:rgba(255,255,255,0.48);}
+.dark .cthumb-co{background:rgba(0,0,0,0.38);border-color:rgba(255,255,255,0.14);color:rgba(255,255,255,0.72);}
+.dark .cbody{border-top-color:rgba(255,255,255,0.07);}
 .dark .ctag{background:rgba(255,255,255,0.08);color:var(--text-2);}
 .dark .cmet{color:#4D94FF;}
 
@@ -1298,26 +1303,58 @@ body{
 .notify-card{
   width:100%;
   text-align:center;
-  background:var(--glass);
+  background:linear-gradient(160deg,
+    rgba(235,240,255,0.82) 0%,
+    rgba(241,236,255,0.82) 100%);
   backdrop-filter:var(--glass-blur-md);
   -webkit-backdrop-filter:var(--glass-blur-md);
-  border-top:1px solid var(--glass-border);
-  border-bottom:1px solid var(--glass-border);
-  border-radius:0;           /* end-to-end: no side radius */
+  border-top:1px solid rgba(255,255,255,0.80);
+  border-bottom:1px solid rgba(255,255,255,0.80);
+  border-radius:0;
   box-shadow:
-    0 -1px 0 rgba(255,255,255,0.55) inset,   /* top specular */
-    0 -20px 60px rgba(0,56,140,0.05);
-  padding:56px 64px 52px;   /* 64px from each edge */
+    0 -1px 0 rgba(255,255,255,0.70) inset,
+    0 -32px 80px rgba(99,102,241,0.07);
+  padding:56px 64px 60px;
   position:relative;overflow:hidden;
 }
+/* iris shimmer top line */
 .notify-card::before{
   content:'';position:absolute;top:0;left:5%;right:5%;
   height:1px;background:var(--iris-grad);pointer-events:none;
 }
+/* layered glow: top highlight + centered bottom radial glow */
 .notify-card::after{
-  content:'';position:absolute;inset:0;border-radius:inherit;
-  background:linear-gradient(160deg,rgba(255,255,255,0.20) 0%,transparent 55%,rgba(255,255,255,0.04) 100%);
-  pointer-events:none;
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(72% 65% at 50% 115%,
+      rgba(99,102,241,0.13) 0%,
+      rgba(139,92,246,0.07) 45%,
+      transparent 70%),
+    linear-gradient(165deg,rgba(255,255,255,0.28) 0%,transparent 50%,rgba(255,255,255,0.05) 100%);
+}
+/* teaser row — blurred locked case-study chips */
+.notify-teasers{
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:8px;
+  margin-bottom:28px;
+  position:relative;z-index:1;
+}
+.teaser-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 13px;
+  background:rgba(255,255,255,0.52);
+  border:1px solid rgba(255,255,255,0.78);
+  border-radius:var(--radius-full);
+  box-shadow:0 1px 0 rgba(255,255,255,0.85) inset,0 2px 8px rgba(99,102,241,0.06);
+  font-size:12px;font-weight:500;
+  color:var(--text-3);
+  letter-spacing:-.005em;
+  user-select:none;
+  filter:blur(0);
+}
+.teaser-chip .ms{
+  font-size:13px;
+  color:var(--text-4,rgba(0,0,0,0.25));
 }
 .notify-badge{
   display:inline-flex;align-items:center;gap:6px;
@@ -1328,15 +1365,15 @@ body{
   font-size:11px;font-weight:600;
   letter-spacing:.06em;text-transform:uppercase;
   color:var(--indigo);
-  margin-bottom:20px;
+  margin-bottom:18px;
   position:relative;z-index:1;
 }
 .notify-badge .ms{font-size:14px;}
 .notify-h{
   font-family:'Atkinson Hyperlegible Next',sans-serif;
-  font-size:clamp(22px,3vw,30px);
+  font-size:clamp(24px,3vw,34px);
   font-weight:400;
-  letter-spacing:-.022em;line-height:1.2;
+  letter-spacing:-.025em;line-height:1.18;
   color:var(--text);
   margin-bottom:12px;
   position:relative;z-index:1;
@@ -1344,21 +1381,22 @@ body{
 .notify-sub{
   font-size:15px;color:var(--text-2);
   line-height:1.55;letter-spacing:-.015em;
-  max-width:380px;margin:0 auto 28px;
+  max-width:380px;margin:0 auto 30px;
   position:relative;z-index:1;
 }
 .notify-actions{
   display:flex;align-items:center;justify-content:center;
-  gap:14px;flex-wrap:wrap;
+  gap:12px;flex-wrap:wrap;
   position:relative;z-index:1;
 }
+/* Primary CTA — LinkedIn blue fill */
 .notify-cta{
   display:inline-flex;align-items:center;gap:8px;
-  padding:13px 28px;
-  background:rgba(10,102,194,0.90);
-  border:1px solid rgba(10,102,194,0.50);
+  padding:13px 26px;
+  background:rgba(10,102,194,0.92);
+  border:1px solid rgba(10,102,194,0.45);
   border-radius:var(--radius-full);
-  box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 10px 28px rgba(10,102,194,0.24);
+  box-shadow:0 2px 0 rgba(255,255,255,0.22) inset,0 10px 28px rgba(10,102,194,0.26);
   color:#fff;
   font-size:14px;font-weight:500;
   font-family:'Inter',sans-serif;
@@ -1368,18 +1406,32 @@ body{
 .notify-cta:hover{
   background:rgba(10,102,194,1);
   transform:translateY(-2px) scale(1.02);
-  box-shadow:0 2px 0 rgba(255,255,255,0.24) inset,0 16px 36px rgba(10,102,194,0.32);
+  box-shadow:0 2px 0 rgba(255,255,255,0.28) inset,0 16px 36px rgba(10,102,194,0.32);
 }
 .notify-cta svg{width:15px;height:15px;fill:#fff;flex-shrink:0;}
-.notify-link{
+/* Secondary CTA — glass pill with indigo text */
+.notify-cta-s{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:12px 24px;
+  background:rgba(255,255,255,0.68);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.82);
+  border-radius:var(--radius-full);
+  box-shadow:0 2px 0 rgba(255,255,255,0.90) inset,0 4px 16px rgba(99,102,241,0.10);
+  color:var(--indigo);
   font-size:14px;font-weight:500;
-  color:var(--text-3);letter-spacing:-.01em;
-  text-decoration:none;
-  border-bottom:1px solid var(--border);
-  padding-bottom:1px;
-  transition:color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease);
+  font-family:'Inter',sans-serif;
+  text-decoration:none;letter-spacing:-.01em;
+  transition:all var(--dur-fast) var(--ease-spr);
 }
-.notify-link:hover{color:var(--text);border-color:var(--text-3);}
+.notify-cta-s .ms{font-size:16px;opacity:.75;}
+.notify-cta-s:hover{
+  background:rgba(255,255,255,0.88);
+  transform:translateY(-2px);
+  box-shadow:0 2px 0 rgba(255,255,255,0.95) inset,0 10px 28px rgba(99,102,241,0.14);
+  color:var(--indigo);
+}
 
 /* Override: .hero .brands-strip — tighter inside hero */
 .hero .brands-strip{
@@ -1427,7 +1479,9 @@ body{
   .notify-card{padding:40px 24px;}
   .notify-h{font-size:20px;}
   .notify-actions{flex-direction:column;gap:10px;width:100%;}
-  .notify-cta{width:100%;justify-content:center;}
+  .notify-cta,.notify-cta-s{width:100%;justify-content:center;}
+  .notify-teasers{gap:6px;}
+  .teaser-chip{font-size:11px;padding:4px 11px;}
 }
 /* banner responsive */
 @media(max-width:480px){
@@ -1493,13 +1547,7 @@ body::after{
    THUMBNAIL BOTTOM FADE — bleeds thumbnail into card body
    ===================== */
 .thumb-fade{
-  position:absolute;bottom:0;left:0;right:0;
-  height:60px;
-  background:linear-gradient(to bottom,transparent 0%,#ffffff 100%);
-  pointer-events:none;z-index:3;
-}
-.dark .thumb-fade{
-  background:linear-gradient(to bottom,transparent 0%,rgba(18,22,38,1) 100%);
+  display:none;  /* removed — replaced by clean border divider on .cthumb */
 }
 
 /* ── count-up animated values ── */
@@ -1880,6 +1928,12 @@ body::after{
   <!-- NOTIFY SECTION — closing hook, full-bleed with 64px side padding -->
   <section class="notify-section">
     <div class="notify-card">
+      <div class="notify-teasers">
+        <span class="teaser-chip"><span class="ms">lock</span>Checkout & Fraud</span>
+        <span class="teaser-chip"><span class="ms">lock</span>AI Learning</span>
+        <span class="teaser-chip"><span class="ms">lock</span>Search & Discovery</span>
+        <span class="teaser-chip"><span class="ms">lock</span>+3 more</span>
+      </div>
       <div class="notify-badge">
         <span class="ms">schedule</span>
         Launching soon
@@ -1891,8 +1945,9 @@ body::after{
           <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           Follow on LinkedIn
         </a>
-        <a class="notify-link" href="https://calendly.com/p-biswas188/15min" target="_blank">
-          or book a call in the meantime →
+        <a class="notify-cta-s" href="https://calendly.com/p-biswas188/15min" target="_blank">
+          <span class="ms">calendar_today</span>
+          Book a call
         </a>
       </div>
     </div>
