@@ -1319,28 +1319,18 @@ body{
 .notify-card{
   width:100%;
   text-align:center;
-  background:var(--glass);
-  backdrop-filter:var(--glass-blur-md);
-  -webkit-backdrop-filter:var(--glass-blur-md);
-  border-top:1px solid var(--glass-border);
-  border-bottom:1px solid var(--glass-border);
+  background:none;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+  border:none;
   border-radius:0;
-  box-shadow:
-    0 -1px 0 rgba(255,255,255,0.55) inset,
-    0 -20px 60px rgba(0,56,140,0.05);
+  box-shadow:none;
   padding:56px 64px 60px;
   position:relative;overflow:hidden;
 }
-/* iris shimmer top line */
-.notify-card::before{
-  content:'';position:absolute;top:0;left:5%;right:5%;
-  height:1px;background:var(--iris-grad);pointer-events:none;
-}
-/* inner highlight */
+.notify-card::before{ display:none; }
 .notify-card::after{
-  content:'';position:absolute;inset:0;border-radius:inherit;
-  background:linear-gradient(160deg,rgba(255,255,255,0.20) 0%,transparent 55%,rgba(255,255,255,0.04) 100%);
-  pointer-events:none;
+  display:none;
 }
 /* teaser row — blurred locked case-study chips */
 .notify-teasers{
