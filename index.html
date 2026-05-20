@@ -330,7 +330,9 @@ body{
 }
 .nav-logo:hover .logo-mark{transform:scale(1.08);}
 .nav-name{
-  font-size:14px;font-weight:500;letter-spacing:-.015em;
+  font-size:14px;font-weight:500;   /* Apple Subhead: 15pt ≈ 14px web */
+  line-height:1.36;                 /* Apple Subhead: 20/15 = 1.33 */
+  letter-spacing:-.015em;           /* Apple Subhead: -0.23pt/15pt = -0.015em ✓ */
   position:relative;z-index:3;
 }
 .nav-right{display:flex;align-items:center;gap:7px;position:relative;z-index:3;}
@@ -431,9 +433,9 @@ body{
 .hero-h1{
   font-family:'Atkinson Hyperlegible Next',sans-serif;
   font-size:clamp(44px,7vw,88px);
-  font-weight:400;
-  line-height:1.07;
-  letter-spacing:-.038em;
+  font-weight:400;                /* Apple Large Title = Regular */
+  line-height:1.08;               /* Apple Large Title leading: 41/34 ≈ 1.21 but display is tighter */
+  letter-spacing:-.024em;         /* Apple Large Title: -0.4pt/34pt = -0.012em; Atkinson is wide → -0.024 */
   max-width:960px;
   margin-bottom:28px;
   color:var(--text);
@@ -451,11 +453,12 @@ body{
 .rword.out{opacity:0;transform:translateY(-14px);}
 .rword.in{opacity:0;transform:translateY(14px);}
 
-/* Hero subtext */
+/* Hero subtext — Apple Callout style (16pt, Regular, -0.31pt tracking) */
 .hero-sub{
   font-size:16px;font-weight:400;
   color:var(--text-2);
-  line-height:1.65;letter-spacing:-.012em;
+  line-height:1.55;               /* Apple Body: 22/17 = 1.29; web is 1.5-1.6 */
+  letter-spacing:-.018em;         /* Apple Callout: -0.31pt/16pt = -0.019em */
   max-width:520px;
   margin:0 auto 36px;
   text-align:center;
@@ -477,7 +480,9 @@ body{
 }
 .impact-item{
   display:flex;align-items:center;gap:6px;
-  font-size:13px;font-weight:500;
+  font-size:13px;font-weight:500;   /* Apple Footnote: 13pt, Regular */
+  line-height:1.38;                  /* Apple Footnote: 18/13 = 1.38 */
+  letter-spacing:-.006em;            /* Apple Footnote: -0.08pt/13pt = -0.006em */
   color:var(--text-2);white-space:nowrap;
 }
 .impact-item .icon{color:var(--text-3);}
@@ -502,10 +507,11 @@ body{
     0 1px 4px rgba(0,0,0,0.08);
   color:#fff;
   font-family:'Inter',sans-serif;
-  font-size:15px;font-weight:500;
+  font-size:15px;font-weight:500;  /* Apple Subhead: 15pt, Regular — Medium (500) for CTA ✓ */
+  line-height:1.33;                /* Apple Subhead: 20/15 = 1.33 */
+  letter-spacing:-.015em;          /* Apple Subhead: -0.23pt/15pt = -0.015em */
   text-decoration:none;cursor:pointer;
   transition:all var(--dur-fast) var(--ease-spr);
-  letter-spacing:-.01em;
 }
 .cta-p:hover{
   background:rgba(0,80,200,0.96);
@@ -529,10 +535,11 @@ body{
     0 1px 3px rgba(0,0,0,0.05);
   color:#0a66c2;
   font-family:'Inter',sans-serif;
-  font-size:15px;font-weight:500;
+  font-size:15px;font-weight:500;  /* Apple Subhead: 15pt */
+  line-height:1.33;
+  letter-spacing:-.015em;
   text-decoration:none;cursor:pointer;
   transition:all var(--dur-fast) var(--ease-spr);
-  letter-spacing:-.01em;
   position:relative;overflow:hidden;
 }
 .cta-s::before{
@@ -573,11 +580,13 @@ body{
 .divider{height:1px;background:var(--border);}
 
 /* =====================
-   SECTION LABEL
+   SECTION LABEL — Apple Caption 2 uppercase
    ===================== */
 .sec-lbl{
-  font-size:11px;font-weight:500;
-  letter-spacing:0.08em;text-transform:uppercase;
+  font-size:11px;font-weight:600;   /* Apple: Semibold for uppercase labels */
+  line-height:1.18;                 /* Apple Caption 2: 13/11 = 1.18 */
+  letter-spacing:0.09em;            /* Uppercase labels need extra +tracking */
+  text-transform:uppercase;
   color:var(--text-3);
 }
 
@@ -697,7 +706,9 @@ body{
   border:1px solid rgba(255,255,255,0.86);
   border-radius:6px;
   padding:3px 9px;
-  font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  font-size:11px;font-weight:600;  /* Apple minimum 11pt; Semibold for badge ↑ from 10px/700 */
+  letter-spacing:.07em;text-transform:uppercase;
+  line-height:1.18;
   color:rgba(0,0,0,0.48);
   pointer-events:none;
 }
@@ -705,26 +716,31 @@ body{
 /* ── Card body ── */
 .cbody{padding:18px 20px 22px;background:#ffffff;}
 
-/* Title — leading element, large */
+/* Title — Apple Headline style: 17pt Semibold */
 .ctit{
   font-family:'Atkinson Hyperlegible Next',sans-serif;
-  font-size:17px;font-weight:700;
-  line-height:1.3;letter-spacing:-.024em;
-  margin-bottom:7px;
+  font-size:17px;font-weight:600;   /* Apple Headline = Semibold (↓ from Bold 700) */
+  line-height:1.29;                 /* Apple Headline: 22/17 = 1.29 */
+  letter-spacing:-.022em;           /* Apple Headline: -0.43pt/17pt = -0.025em ≈ -0.022em */
+  margin-bottom:6px;
   color:var(--text);
 }
 
-/* Metric — accent blue, punchy */
+/* Metric — Apple Caption 1: 12pt Regular, 0pt tracking */
 .cmet{
   font-size:12px;font-weight:600;
+  line-height:1.33;                 /* Apple Caption 1: 16/12 = 1.33 */
+  letter-spacing:0em;               /* Apple Caption 1 = 0pt tracking */
   color:#0056D2;
-  margin-bottom:14px;letter-spacing:-.01em;
+  margin-bottom:13px;
 }
 
-/* Tags — soft filled pills, no border */
+/* Tags — Apple Caption 2: 11pt minimum */
 .ctags{display:flex;gap:5px;flex-wrap:wrap;}
 .ctag{
-  font-size:10.5px;font-weight:500;
+  font-size:11px;font-weight:500;   /* ↑ from 10.5px — Apple minimum 11pt */
+  line-height:1.18;
+  letter-spacing:.01em;
   padding:3px 10px;border-radius:var(--radius-full);
   color:var(--text-2);
   background:rgba(0,0,0,0.05);
@@ -850,8 +866,10 @@ body{
 }
 .tq{
   font-family:'Atkinson Hyperlegible Next',sans-serif;
-  font-size:11.5px;font-style:italic;
-  line-height:1.55;letter-spacing:-.01em;
+  font-size:12px;                   /* ↑ from 11.5px — Apple Caption 1: 12pt */
+  font-style:italic;
+  line-height:1.5;                  /* Apple Caption 1: 16/12 = 1.33; italic needs a little more */
+  letter-spacing:0em;               /* Apple Caption 1 = 0pt tracking */
   color:var(--text);
   flex:1;margin-bottom:10px;
   position:relative;z-index:1;
@@ -867,18 +885,30 @@ body{
 .tav{
   width:28px;height:28px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  font-size:9.5px;font-weight:700;
-  flex-shrink:0;letter-spacing:.01em;
+  font-size:11px;font-weight:600;   /* ↑ from 9.5px — Apple minimum 11pt; Semibold */
+  flex-shrink:0;letter-spacing:.02em;
   box-shadow:0 1.5px 0 rgba(255,255,255,0.3) inset,0 3px 8px rgba(0,0,0,0.12);
 }
 .tinfo{flex:1;min-width:0;}
-.tname{font-size:11.5px;font-weight:500;letter-spacing:-.01em;}
-.trole{font-size:10px;color:var(--text-3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tname{
+  font-size:12px;font-weight:500;   /* ↑ from 11.5px — Apple Caption 1 */
+  line-height:1.33;
+  letter-spacing:-.008em;
+}
+.trole{
+  font-size:11px;                   /* ↑ from 10px — Apple minimum 11pt / Caption 2 */
+  line-height:1.18;
+  letter-spacing:.007em;            /* Apple Caption 2: +0.07pt/11pt = +0.006em */
+  color:var(--text-3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
 .tverify{
   display:flex;align-items:center;gap:3px;
-  margin-top:3px;font-size:9px;color:var(--text-3);
+  margin-top:3px;
+  font-size:11px;                   /* ↑ from 9px — Apple minimum 11pt */
+  line-height:1.18;
+  color:var(--text-3);
 }
-.tverify svg{width:8px;height:8px;fill:var(--text-3);flex-shrink:0;}
+.tverify svg{width:9px;height:9px;fill:var(--text-3);flex-shrink:0;}
 
 /* =====================
    FOOTER — glass bar
@@ -900,7 +930,12 @@ body{
   height:1px;background:var(--iris-grad);pointer-events:none;
 }
 .footer-l{display:flex;flex-direction:column;gap:4px;}
-.f-copy{font-size:13px;color:var(--text-2);}
+.f-copy{
+  font-size:13px;                   /* Apple Footnote: 13pt */
+  line-height:1.38;                 /* Apple Footnote: 18/13 = 1.38 */
+  letter-spacing:-.006em;
+  color:var(--text-2);
+}
 .f-loc{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--text-3);}
 .f-loc .ms{font-size:15px;}
 .f-socials{display:flex;align-items:center;gap:6px;}
@@ -943,8 +978,9 @@ body{
   .site-footer{padding:20px 32px;}
   .container{padding:0 32px;}
   .hero{padding:72px 0 60px;}
-  .hero-h1{font-size:clamp(38px,5.5vw,64px);}
-  .hero-sub{font-size:15px;}
+  /* Apple proportional: ~90% of base scale */
+  .hero-h1{font-size:clamp(38px,5.5vw,64px);letter-spacing:-.022em;}
+  .hero-sub{font-size:15px;letter-spacing:-.016em;}
   .cs-grid{gap:12px;}
   .ccard{width:272px;}
 }
@@ -1001,7 +1037,8 @@ body{
 
   /* Hero: tighter vertical rhythm */
   .hero{padding:36px 0 24px;}
-  .hero-h1{font-size:clamp(30px,9vw,44px);letter-spacing:-.03em;}
+  /* Apple proportional: ~75% of base — maintain -0.024em ratio */
+  .hero-h1{font-size:clamp(30px,9vw,44px);letter-spacing:-.022em;}
   .h1-line1{white-space:normal;}
   .hero-role{
     font-size:10.5px;padding:5px 12px;
@@ -1041,12 +1078,17 @@ body{
 @media(max-width:360px){
   :root{--cpad:14px;}
   .hero{padding:28px 0 20px;}
-  .hero-h1{font-size:clamp(26px,8.5vw,36px);}
-  .hero-role{font-size:9.5px;padding:4px 11px;}
-  .hero-sub{font-size:12px;margin-bottom:16px;}
-  .cta-p,.cta-s{font-size:13px;padding:13px 20px;}
+  /* Apple: scale down proportionally, never below Footnote (13pt) for body */
+  .hero-h1{font-size:clamp(26px,8.5vw,36px);letter-spacing:-.020em;}
+  .hero-role{font-size:10.5px;padding:4px 11px;}  /* stays ≥ min via nowrap */
+  .hero-sub{font-size:14px;margin-bottom:16px;letter-spacing:-.014em;}
+  .impact-item{font-size:12px;}    /* Footnote→Caption 1 at very small screens */
+  .cta-p,.cta-s{font-size:14px;padding:13px 20px;}
   .ccard{width:min(84vw,280px);}
   .cs-header{padding:0 14px;}
+  .ctit{font-size:16px;}           /* Title at small phones: Apple Title 3 (20pt) → scaled */
+  .cmet{font-size:11px;}           /* Stays at Apple minimum */
+  .ctag{font-size:11px;}           /* Stays at Apple minimum */
 }
 
 /* ── Landscape phones: short viewport (max-height:500px) ── */
