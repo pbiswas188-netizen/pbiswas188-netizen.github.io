@@ -1319,17 +1319,15 @@ body{
 .notify-card{
   width:100%;
   text-align:center;
-  background:linear-gradient(160deg,
-    rgba(235,240,255,0.82) 0%,
-    rgba(241,236,255,0.82) 100%);
+  background:var(--glass);
   backdrop-filter:var(--glass-blur-md);
   -webkit-backdrop-filter:var(--glass-blur-md);
-  border-top:1px solid rgba(255,255,255,0.80);
-  border-bottom:1px solid rgba(255,255,255,0.80);
+  border-top:1px solid var(--glass-border);
+  border-bottom:1px solid var(--glass-border);
   border-radius:0;
   box-shadow:
-    0 -1px 0 rgba(255,255,255,0.70) inset,
-    0 -32px 80px rgba(99,102,241,0.07);
+    0 -1px 0 rgba(255,255,255,0.55) inset,
+    0 -20px 60px rgba(0,56,140,0.05);
   padding:56px 64px 60px;
   position:relative;overflow:hidden;
 }
@@ -1338,15 +1336,11 @@ body{
   content:'';position:absolute;top:0;left:5%;right:5%;
   height:1px;background:var(--iris-grad);pointer-events:none;
 }
-/* layered glow: top highlight + centered bottom radial glow */
+/* inner highlight */
 .notify-card::after{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(72% 65% at 50% 115%,
-      rgba(99,102,241,0.13) 0%,
-      rgba(139,92,246,0.07) 45%,
-      transparent 70%),
-    linear-gradient(165deg,rgba(255,255,255,0.28) 0%,transparent 50%,rgba(255,255,255,0.05) 100%);
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(160deg,rgba(255,255,255,0.20) 0%,transparent 55%,rgba(255,255,255,0.04) 100%);
+  pointer-events:none;
 }
 /* teaser row — blurred locked case-study chips */
 .notify-teasers{
@@ -1944,12 +1938,6 @@ body::after{
   <!-- NOTIFY SECTION — closing hook, full-bleed with 64px side padding -->
   <section class="notify-section">
     <div class="notify-card">
-      <div class="notify-teasers">
-        <span class="teaser-chip"><span class="ms">lock</span>Checkout & Fraud</span>
-        <span class="teaser-chip"><span class="ms">lock</span>AI Learning</span>
-        <span class="teaser-chip"><span class="ms">lock</span>Search & Discovery</span>
-        <span class="teaser-chip"><span class="ms">lock</span>+3 more</span>
-      </div>
       <div class="notify-badge">
         <span class="ms">schedule</span>
         Launching soon
