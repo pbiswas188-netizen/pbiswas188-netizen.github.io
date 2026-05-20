@@ -249,6 +249,26 @@ body{
   filter:blur(110px);
   top:0;left:0; /* JS sets position via translate3d */
 }
+/* Second ambient blob — static, bottom-right, warm violet */
+.blob-b{
+  width:640px;height:640px;
+  background:radial-gradient(circle at center,
+    rgba(109,40,217,0.18) 0%,
+    rgba(0,86,210,0.10) 45%,
+    transparent 72%
+  );
+  filter:blur(130px);
+  bottom:-160px;right:-140px;
+  position:absolute;
+  pointer-events:none;
+}
+.dark .blob-b{
+  background:radial-gradient(circle at center,
+    rgba(109,40,217,0.14) 0%,
+    rgba(0,86,210,0.07) 45%,
+    transparent 72%
+  );
+}
 
 /* =====================
    LAYOUT
@@ -411,8 +431,23 @@ body{
 .hero{
   display:flex;flex-direction:column;
   align-items:center;text-align:center;
-  padding:96px 0 88px;
+  padding:88px 0 60px;
+  position:relative;
 }
+/* Soft indigo radial spotlight — gives the stat grid a glowing stage */
+.hero::before{
+  content:'';position:absolute;
+  width:700px;height:500px;
+  background:radial-gradient(ellipse at 50% 62%,
+    rgba(0,86,210,0.055) 0%,
+    rgba(109,40,217,0.030) 45%,
+    transparent 70%
+  );
+  top:0;left:50%;transform:translateX(-50%);
+  pointer-events:none;z-index:0;
+}
+/* All direct children of hero need z-index to sit above spotlight */
+.hero > *{position:relative;z-index:1;}
 .hero-role{
   display:inline-flex;align-items:center;gap:8px;
   font-size:11.5px;font-weight:500;
@@ -460,7 +495,7 @@ body{
   line-height:1.55;               /* Apple Body: 22/17 = 1.29; web is 1.5-1.6 */
   letter-spacing:-.018em;         /* Apple Callout: -0.31pt/16pt = -0.019em */
   max-width:520px;
-  margin:0 auto 36px;
+  margin:0 auto 28px;
   text-align:center;
 }
 .hero-sub strong{color:var(--text);font-weight:600;}
@@ -588,6 +623,14 @@ body{
   letter-spacing:0.09em;            /* Uppercase labels need extra +tracking */
   text-transform:uppercase;
   color:var(--text-3);
+  display:inline-flex;align-items:center;gap:7px;
+}
+/* Indigo dot before every section label */
+.sec-lbl::before{
+  content:'';flex-shrink:0;
+  width:5px;height:5px;border-radius:50%;
+  background:var(--indigo);
+  opacity:.7;
 }
 
 /* =====================
@@ -657,20 +700,20 @@ body{
   box-shadow:0 16px 48px rgba(0,0,0,0.13),0 3px 10px rgba(0,0,0,0.07);
 }
 .cthumb{
-  width:100%;height:150px;
+  width:100%;height:168px;
   position:relative;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
 }
 /* Photos hidden */
 .cthumb-img{ display:none; }
 
-/* ── Thumbnail fills — rich radial gradients ── */
-.ct-g{ background:radial-gradient(ellipse at 38% 38%, #dce8fc 0%, #c4d8f8 55%, #b0c8f4 100%); }
-.ct-r{ background:radial-gradient(ellipse at 65% 32%, #e4dcf8 0%, #cfc0f5 55%, #baaef0 100%); }
-.ct-a{ background:radial-gradient(ellipse at 34% 60%, #cfe9df 0%, #b0dfca 55%, #96d4b6 100%); }
-.ct-y{ background:radial-gradient(ellipse at 55% 38%, #d8e4f0 0%, #c2d4ea 55%, #b0c8e2 100%); }
-.ct-d{ background:radial-gradient(ellipse at 30% 65%, #d2ddf0 0%, #bacce8 55%, #a8bcde 100%); }
-.ct-b{ background:radial-gradient(ellipse at 66% 34%, #cce1f6 0%, #b4d0f3 55%, #a0c3ef 100%); }
+/* ── Thumbnail fills — richer, more saturated radial gradients ── */
+.ct-g{ background:radial-gradient(ellipse at 38% 35%, #cfe0fb 0%, #b2ccf7 50%, #9ab8f2 100%); }
+.ct-r{ background:radial-gradient(ellipse at 65% 30%, #ddd4fb 0%, #c8b8f8 50%, #b3a2f3 100%); }
+.ct-a{ background:radial-gradient(ellipse at 34% 62%, #bde8d5 0%, #99dcbf 50%, #7ad0a9 100%); }
+.ct-y{ background:radial-gradient(ellipse at 55% 36%, #cfd9ee 0%, #b6c8e5 50%, #a0b8dc 100%); }
+.ct-d{ background:radial-gradient(ellipse at 30% 65%, #c8d4ec 0%, #afc1e2 50%, #9bb0d8 100%); }
+.ct-b{ background:radial-gradient(ellipse at 66% 32%, #bfd8f8 0%, #a6c7f5 50%, #8eb6f1 100%); }
 
 /* ── Thumbnail decorative shape: large soft circle (::before) ── */
 /* Each gradient panel gets one floating semi-transparent circle for depth */
@@ -1169,61 +1212,79 @@ body{
 }
 
 /* =====================
-   STAT GRID — 4-up visual impact numbers
-   The numbers are the hero. Make them the centrepiece.
+   STAT GRID — 4 individual glass pills
+   Airy, premium — each stat is its own card, not a table cell
    ===================== */
 .stat-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  background:rgba(0,0,0,0.05);
-  border-radius:var(--radius-lg);
-  overflow:hidden;
-  border:1px solid rgba(0,0,0,0.05);
-  max-width:580px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  max-width:600px;
   width:100%;
-  margin:0 auto 32px;
-}
-.dark .stat-grid{
-  background:rgba(255,255,255,0.06);
-  border-color:rgba(255,255,255,0.06);
+  margin:0 auto 24px;
+  flex-wrap:wrap;
 }
 .stat-cell{
-  background:var(--glass);
+  flex:1;min-width:110px;
+  background:var(--glass-strong);
   backdrop-filter:var(--glass-blur-sm);
   -webkit-backdrop-filter:var(--glass-blur-sm);
-  padding:20px 10px 16px;
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--glass-shd-sm);
+  padding:22px 14px 18px;
   display:flex;flex-direction:column;
   align-items:center;text-align:center;
-  position:relative;
+  position:relative;overflow:hidden;
+  transition:transform var(--dur-fast) var(--ease-spr),
+             box-shadow var(--dur-fast) var(--ease);
 }
-/* Iris shimmer on top of each cell */
+.stat-cell:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--glass-shd-hover);
+}
+/* Iris shimmer on top edge of each pill */
 .stat-cell::before{
-  content:'';position:absolute;top:0;left:10%;right:10%;
+  content:'';position:absolute;top:0;left:8%;right:8%;
   height:1px;background:var(--iris-grad);
-  pointer-events:none;
+  pointer-events:none;z-index:2;
+}
+/* Inner highlight */
+.stat-cell::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(160deg,rgba(255,255,255,0.28) 0%,transparent 55%);
+  pointer-events:none;z-index:1;
 }
 .stat-num{
   font-family:'Atkinson Hyperlegible Next',sans-serif;
-  font-size:clamp(24px,3.2vw,34px);
+  font-size:clamp(26px,3.5vw,36px);
   font-weight:700;
   letter-spacing:-.03em;
   line-height:1;
-  color:var(--text);
-  margin-bottom:5px;
+  /* Indigo gradient — makes the numbers the visual hero */
+  background-image:linear-gradient(135deg,var(--indigo) 10%,#4D94FF 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  margin-bottom:7px;
   font-variant-numeric:tabular-nums;
+  position:relative;z-index:2;
 }
 .stat-lbl{
-  font-size:10.5px;font-weight:600;
-  letter-spacing:.06em;text-transform:uppercase;
+  font-size:10px;font-weight:600;
+  letter-spacing:.07em;text-transform:uppercase;
   color:var(--text-3);
   line-height:1.18;
   margin-bottom:3px;
+  position:relative;z-index:2;
 }
 .stat-co{
   font-size:11px;font-weight:500;
   color:var(--indigo);
   letter-spacing:-.005em;
+  position:relative;z-index:2;
+}
+.dark .stat-num{
+  background-image:linear-gradient(135deg,#7AB5FF 10%,#4D94FF 100%);
 }
 .dark .stat-co{color:#4D94FF;}
 
@@ -1323,8 +1384,8 @@ body{
 /* Override: .hero .brands-strip — tighter inside hero */
 .hero .brands-strip{
   padding:0;
-  gap:10px;
-  margin-bottom:32px;
+  gap:8px;
+  margin-bottom:24px;
 }
 .hero .brands-strip .brands-lbl{
   font-size:10.5px;
@@ -1340,15 +1401,13 @@ body{
 
 /* stat-grid responsive */
 @media(max-width:640px){
-  .stat-grid{
-    grid-template-columns:repeat(2,1fr);
-    max-width:100%;
-  }
-  .stat-cell{padding:16px 10px 13px;}
-  .stat-num{font-size:clamp(22px,6.5vw,30px);}
+  .stat-grid{gap:8px;max-width:100%;}
+  .stat-cell{min-width:calc(50% - 4px);padding:18px 12px 14px;}
+  .stat-num{font-size:clamp(24px,7vw,32px);}
 }
 @media(max-width:360px){
-  .stat-num{font-size:20px;}
+  .stat-num{font-size:22px;}
+  .stat-cell{padding:14px 10px 12px;}
   .notify-card{padding:28px 20px 24px;border-radius:20px;}
   .notify-h{font-size:20px;}
 }
@@ -1416,14 +1475,14 @@ body::after{
   font-size:18px;font-weight:400;
   letter-spacing:-.014em;
   color:var(--text);
-  opacity:.22;
+  opacity:.38;
   padding:4px 22px;
   white-space:nowrap;
   transition:opacity var(--dur-base) var(--ease);
   cursor:default;
   user-select:none;
 }
-.brand-name:hover{opacity:.55;}
+.brand-name:hover{opacity:.72;}
 .brand-sep{
   width:4px;height:4px;border-radius:50%;
   background:var(--text-3);
@@ -1572,6 +1631,7 @@ body::after{
 <!-- BACKGROUND -->
 <div class="bg-wrap">
   <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
 </div>
 
 <!-- LAUNCH BANNER — sets "coming soon" context immediately -->
