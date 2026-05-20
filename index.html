@@ -1291,14 +1291,23 @@ body{
 }
 .stat-co{
   font-size:11px;font-weight:500;
-  color:#15803d;
+  color:var(--text);
   letter-spacing:-.005em;
   position:relative;z-index:2;
 }
 .dark .stat-num{
   background-image:linear-gradient(135deg,#4ade80 10%,#86efac 100%);
 }
-.dark .stat-co{color:#4ade80;}
+.dark .stat-co{color:var(--text);}
+.stat-co a{
+  color:inherit;text-decoration:none;
+  border-bottom:1px solid rgba(0,0,0,0.18);
+  padding-bottom:1px;
+  transition:border-color var(--dur-fast) var(--ease),opacity var(--dur-fast) var(--ease);
+}
+.stat-co a:hover{opacity:.65;border-color:rgba(0,0,0,0.40);}
+.dark .stat-co a{border-color:rgba(255,255,255,0.22);}
+.dark .stat-co a:hover{border-color:rgba(255,255,255,0.50);}
 
 /* =====================
    NOTIFY SECTION — launch hook
@@ -1744,22 +1753,22 @@ body::after{
         <div class="stat-cell">
           <div class="stat-num"><span class="count-val" data-to="18" data-prefix="+" data-suffix="%">+18%</span></div>
           <div class="stat-lbl">Checkout CVR</div>
-          <div class="stat-co">Coursera</div>
+          <div class="stat-co"><a href="https://www.coursera.org" target="_blank" rel="noopener">Coursera</a></div>
         </div>
         <div class="stat-cell">
           <div class="stat-num">↓<span class="count-val" data-to="73" data-suffix="%">73%</span></div>
           <div class="stat-lbl">Chargebacks</div>
-          <div class="stat-co">Coursera</div>
+          <div class="stat-co"><a href="https://www.coursera.org" target="_blank" rel="noopener">Coursera</a></div>
         </div>
         <div class="stat-cell">
           <div class="stat-num"><span class="count-val" data-to="100" data-suffix="M+">100M+</span></div>
           <div class="stat-lbl">Users served</div>
-          <div class="stat-co">OLX Autos</div>
+          <div class="stat-co"><a href="https://www.olx.com" target="_blank" rel="noopener">OLX Autos</a></div>
         </div>
         <div class="stat-cell">
           <div class="stat-num"><span class="count-val" data-to="27" data-prefix="+" data-suffix="%">+27%</span></div>
           <div class="stat-lbl">Dealer CVR</div>
-          <div class="stat-co">Cars24</div>
+          <div class="stat-co"><a href="https://www.cars24.com" target="_blank" rel="noopener">Cars24</a></div>
         </div>
       </div>
 
