@@ -824,10 +824,17 @@ body{
 /* Metric — Apple Caption 1: 12pt Regular, 0pt tracking */
 .cmet{
   font-size:12px;font-weight:600;
-  line-height:1.33;                 /* Apple Caption 1: 16/12 = 1.33 */
-  letter-spacing:0em;               /* Apple Caption 1 = 0pt tracking */
-  color:#0056D2;
+  line-height:1.33;
+  letter-spacing:0em;
+  color:var(--text-2);
   margin-bottom:13px;
+}
+/* Positive metric highlight — green */
+.cmet .good{
+  color:#15803d;
+}
+.dark .cmet .good{
+  color:#4ade80;
 }
 
 /* Tags — Apple Caption 2: 11pt minimum */
@@ -1808,7 +1815,7 @@ body::after{
             </div>
             <div class="cbody">
               <div class="ctit">Checkout & Fraud Reduction</div>
-              <div class="cmet">Chargebacks ↓ 73% → 3.45% · $64.3M ARR protected</div>
+              <div class="cmet"><span class="good">Chargebacks ↓ 73% → 3.45%</span> · $64.3M ARR protected</div>
               <div class="ctags">
                 <span class="ctag">Checkout UX</span>
                 <span class="ctag">Interaction Design</span>
@@ -1828,7 +1835,7 @@ body::after{
             </div>
             <div class="cbody">
               <div class="ctit">AI Learning Companion</div>
-              <div class="cmet">+41% lesson completion · 2.3M+ learners</div>
+              <div class="cmet"><span class="good">+41% lesson completion</span> · 2.3M+ learners</div>
               <div class="ctags">
                 <span class="ctag">Conversational UI</span>
                 <span class="ctag">AI/LLM UX</span>
@@ -1848,7 +1855,7 @@ body::after{
             </div>
             <div class="cbody">
               <div class="ctit">Search & Discovery</div>
-              <div class="cmet">100M+ MAU · 30+ countries · +34% CVR</div>
+              <div class="cmet">100M+ MAU · 30+ countries · <span class="good">+34% CVR</span></div>
               <div class="ctags">
                 <span class="ctag">Discovery UX</span>
                 <span class="ctag">Systems Design</span>
@@ -1868,7 +1875,7 @@ body::after{
             </div>
             <div class="cbody">
               <div class="ctit">Field Inspections App</div>
-              <div class="cmet">Drop-off ↓ 38% · deployed across 18 markets</div>
+              <div class="cmet"><span class="good">Drop-off ↓ 38%</span> · deployed across 18 markets</div>
               <div class="ctags">
                 <span class="ctag">Field UX</span>
                 <span class="ctag">Service Design</span>
@@ -1888,7 +1895,7 @@ body::after{
             </div>
             <div class="cbody">
               <div class="ctit">Talent Hub Platform</div>
-              <div class="cmet">+52% recruiter efficiency · 700+ enterprises</div>
+              <div class="cmet"><span class="good">+52% recruiter efficiency</span> · 700+ enterprises</div>
               <div class="ctags">
                 <span class="ctag">Platform Design</span>
                 <span class="ctag">0→1</span>
@@ -1908,7 +1915,7 @@ body::after{
             </div>
             <div class="cbody">
               <div class="ctit">Dealer Activation Platform</div>
-              <div class="cmet">+27% dealer conversion · ₹300Cr+ financing</div>
+              <div class="cmet"><span class="good">+27% dealer conversion</span> · ₹300Cr+ financing</div>
               <div class="ctags">
                 <span class="ctag">Product Strategy</span>
                 <span class="ctag">0→1 Design</span>
