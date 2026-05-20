@@ -171,6 +171,37 @@
 .dark .rword{
   background-image:linear-gradient(95deg,#7AB5FF 0%,#4D94FF 50%,#6ee7b7 100%);
 }
+/* Dark mode CTA fixes */
+.dark .cta-p{
+  background:rgba(77,148,255,0.72);
+  border-color:rgba(77,148,255,0.40);
+  box-shadow:0 2px 0 rgba(255,255,255,0.14) inset,0 12px 36px rgba(77,148,255,0.22),0 1px 4px rgba(0,0,0,0.20);
+}
+.dark .cta-p:hover{
+  background:rgba(77,148,255,0.92);
+  box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 18px 48px rgba(77,148,255,0.32),0 2px 6px rgba(0,0,0,0.25);
+}
+.dark .cta-s{
+  color:#7AB5FF;
+  border-color:rgba(77,148,255,0.28);
+  background:rgba(77,148,255,0.08);
+  box-shadow:0 2px 0 rgba(255,255,255,0.06) inset,0 8px 24px rgba(77,148,255,0.08),0 1px 3px rgba(0,0,0,0.20);
+}
+.dark .cta-s:hover{
+  color:#a0c8ff;
+  background:rgba(77,148,255,0.16);
+  border-color:rgba(77,148,255,0.44);
+}
+.dark .cta-s::before{
+  background:linear-gradient(90deg,transparent 0%,rgba(77,148,255,0.3) 30%,rgba(77,148,255,0.5) 50%,rgba(77,148,255,0.3) 70%,transparent 100%);
+}
+/* Dark mode avail badge */
+.dark .avail{
+  background:rgba(34,197,94,0.12);
+  border-color:rgba(34,197,94,0.30);
+  color:#4ade80;
+}
+.dark .dot{background:#4ade80;}
 
 /* =====================
    BASE
@@ -419,6 +450,26 @@ body{
 }
 .rword.out{opacity:0;transform:translateY(-14px);}
 .rword.in{opacity:0;transform:translateY(14px);}
+
+/* Hero subtext */
+.hero-sub{
+  font-size:16px;font-weight:400;
+  color:var(--text-2);
+  line-height:1.65;letter-spacing:-.012em;
+  max-width:520px;
+  margin:0 auto 36px;
+  text-align:center;
+}
+.hero-sub strong{color:var(--text);font-weight:600;}
+.hero-loc{
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  font-size:13px;color:var(--text-3);
+  margin-top:8px;
+}
+.hero-loc .ms{font-size:15px;}
+.dark .hero-sub{color:var(--text-2);}
+.dark .hero-sub strong{color:var(--text);}
+
 .impact-row{
   display:flex;align-items:center;justify-content:center;
   flex-wrap:wrap;gap:8px 20px;
@@ -871,26 +922,30 @@ body{
   .container{padding:0 32px;}
   .hero{padding:72px 0 64px;}
   .hero-h1{font-size:clamp(38px,5.5vw,64px);}
+  .hero-sub{font-size:15px;}
   .cs-grid{gap:12px;}
   .ccard{width:272px;}
   .t-section{padding:40px 0 52px;}
 }
 @media(max-width:768px){
-  :root{--cpad:24px;}
+  :root{--cpad:20px;}
   .nav-bar{padding:0 12px;top:8px;}
   .nav-inner{max-width:100%;height:48px;padding:0 16px;}
   .site-footer{padding:18px 24px;}
-  .container{padding:0 24px;}
-  .hero{padding:56px 0 52px;}
-  .hero-h1{font-size:clamp(32px,6.5vw,52px);}
+  .container{padding:0 20px;}
+  .hero{padding:52px 0 48px;}
+  .hero-h1{font-size:clamp(34px,7vw,56px);}
+  .hero-sub{font-size:14px;max-width:90%;}
+  .impact-row{max-width:540px;}
   .cs-grid{gap:10px;}
-  .ccard{width:250px;}
+  .ccard{width:260px;}
   .nav-name{display:none;}
   .avail .avail-txt{display:none;}
   .avail{padding:5px 9px;}
   .t-section{padding:32px 0 40px;}
   .tcard{width:190px;}
   .f-loc{font-size:11px;}
+  .site-footer{flex-direction:column;align-items:flex-start;gap:10px;}
 }
 @media(max-width:480px){
   :root{--cpad:16px;}
@@ -898,16 +953,21 @@ body{
   .nav-inner{height:46px;padding:0 14px;}
   .site-footer{padding:16px;}
   .container{padding:0 16px;}
-  .hero{padding:44px 0 44px;}
-  .hero-h1{font-size:clamp(28px,8.5vw,40px);}
+  .hero{padding:40px 0 40px;}
+  .hero-h1{font-size:clamp(30px,9vw,44px);letter-spacing:-.03em;}
   .h1-line1{white-space:normal;}
-  .hero-role{font-size:11px;}
-  .impact-row{gap:6px 12px;}
+  .hero-sub{font-size:13.5px;margin-bottom:24px;max-width:100%;}
+  .hero-role{font-size:10.5px;padding:5px 13px;flex-wrap:wrap;justify-content:center;text-align:center;row-gap:2px;}
+  .impact-row{gap:6px 10px;margin-bottom:32px;}
   .impact-sep{display:none;}
-  .cta-row{flex-direction:column;width:100%;align-items:stretch;}
-  .cta-p,.cta-s{justify-content:center;width:100%;}
-  .cs-grid{gap:8px;}
-  .ccard{width:230px;}
+  .impact-item{font-size:12px;}
+  .cta-row{flex-direction:column;width:100%;align-items:stretch;gap:8px;}
+  .cta-p,.cta-s{justify-content:center;width:100%;padding:14px 24px;font-size:14px;}
+  .cs-grid{gap:10px;}
+  .ccard{width:min(82vw,290px);}
+  .cthumb{height:140px;}
+  .cbody{padding:14px 16px 18px;}
+  .ctit{font-size:15px;}
   .site-footer{flex-direction:column;align-items:flex-start;gap:8px;}
   .nav-hire .hire-txt{display:none;}
   .nav-hire{padding:6px 12px;}
@@ -916,7 +976,6 @@ body{
   .tq{font-size:11px;}
   .mq-btn{width:32px;height:32px;}
   .mq-btn .ms{font-size:16px;}
-  .f-loc{font-size:10.5px;}
 }
 </style>
 </head>
@@ -1047,6 +1106,11 @@ body{
       <h1 class="hero-h1">
         <span class="h1-line1">Designing <span class="rw-wrap"><span class="rword" id="rw">revenue-driving</span></span></span><span class="h1-line2">experiences.</span>
       </h1>
+
+      <p class="hero-sub">
+        10 years turning <strong>complex problems</strong> into products people love — shipped at <strong>Coursera, OLX Autos, Cars24 &amp; Darwinbox</strong>.
+        <span class="hero-loc"><span class="ms">location_on</span>Dubai &nbsp;·&nbsp; Open to remote &amp; relocation</span>
+      </p>
 
       <div class="impact-row">
         <div class="impact-item">
@@ -1314,11 +1378,15 @@ function updateNav(){
   const blurPx    = (32 + ratio * 20).toFixed(1);
   const shadowAlpha = (0.06 + ratio * 0.10).toFixed(3);
   nav.style.background = dark
-    ? `rgba(18,14,40,${alpha})`
+    ? `rgba(13,18,38,${alpha})`
     : `rgba(255,255,255,${alpha})`;
-  nav.style.backdropFilter         = `blur(${blurPx}px) saturate(200%) brightness(1.05)`;
-  nav.style.webkitBackdropFilter   = `blur(${blurPx}px) saturate(200%) brightness(1.05)`;
-  nav.style.boxShadow = `
+  nav.style.backdropFilter         = `blur(${blurPx}px) saturate(200%) brightness(${dark?1.04:1.05})`;
+  nav.style.webkitBackdropFilter   = `blur(${blurPx}px) saturate(200%) brightness(${dark?1.04:1.05})`;
+  nav.style.boxShadow = dark ? `
+    0 1px 0 0 rgba(255,255,255,0.09) inset,
+    0 -0.5px 0 0 rgba(0,0,0,0.60) inset,
+    0 ${(20+ratio*18).toFixed(0)}px ${(60+ratio*40).toFixed(0)}px rgba(0,0,0,${(0.35+ratio*0.25).toFixed(3)}),
+    0 1px 4px rgba(0,0,0,0.25)` : `
     0 2.5px 0 0 rgba(255,255,255,0.88) inset,
     0 -0.5px 0 0 rgba(0,0,0,0.04) inset,
     1px 0 0 0 rgba(255,255,255,0.38) inset,
