@@ -672,8 +672,56 @@ body{
 .ct-d{ background:radial-gradient(ellipse at 30% 65%, #d2ddf0 0%, #bacce8 55%, #a8bcde 100%); }
 .ct-b{ background:radial-gradient(ellipse at 66% 34%, #cce1f6 0%, #b4d0f3 55%, #a0c3ef 100%); }
 
-/* Remove legacy overlays */
-.ct-g::after,.ct-r::after,.ct-a::after,.ct-y::after,.ct-d::after,.ct-b::after{display:none;}
+/* ── Thumbnail decorative shape: large soft circle (::before) ── */
+/* Each gradient panel gets one floating semi-transparent circle for depth */
+.ct-g::before{
+  content:'';position:absolute;
+  width:130px;height:130px;border-radius:50%;
+  background:rgba(0,86,210,0.10);
+  top:-32px;right:-28px;pointer-events:none;z-index:0;
+}
+.ct-r::before{
+  content:'';position:absolute;
+  width:120px;height:120px;border-radius:50%;
+  background:rgba(109,40,217,0.10);
+  top:-24px;left:-22px;pointer-events:none;z-index:0;
+}
+.ct-a::before{
+  content:'';position:absolute;
+  width:110px;height:110px;border-radius:50%;
+  background:rgba(52,211,153,0.12);
+  bottom:-28px;right:-18px;pointer-events:none;z-index:0;
+}
+.ct-y::before{
+  content:'';position:absolute;
+  width:96px;height:96px;border-radius:20px;
+  background:rgba(100,116,184,0.11);
+  top:-18px;right:-16px;
+  transform:rotate(22deg);pointer-events:none;z-index:0;
+}
+.ct-d::before{
+  content:'';position:absolute;
+  width:116px;height:116px;border-radius:50%;
+  background:rgba(26,56,120,0.10);
+  top:-26px;left:-22px;pointer-events:none;z-index:0;
+}
+.ct-b::before{
+  content:'';position:absolute;
+  width:104px;height:104px;border-radius:50%;
+  background:rgba(59,130,246,0.10);
+  bottom:-24px;left:-16px;pointer-events:none;z-index:0;
+}
+/* Secondary accent ring (::after) — smaller, offset opposite corner */
+.ct-g::after,.ct-r::after,.ct-a::after,.ct-y::after,.ct-d::after,.ct-b::after{
+  content:'';position:absolute;pointer-events:none;z-index:0;
+  border-radius:50%;
+}
+.ct-g::after{ width:50px;height:50px;border:2px solid rgba(0,86,210,0.13);bottom:22px;left:22px; }
+.ct-r::after{ width:44px;height:44px;border:2px solid rgba(109,40,217,0.13);bottom:20px;right:24px; }
+.ct-a::after{ width:40px;height:40px;border:2px solid rgba(52,211,153,0.16);top:18px;left:20px; }
+.ct-y::after{ width:46px;height:46px;border:2px solid rgba(100,116,184,0.14);bottom:20px;left:18px;border-radius:10px;transform:rotate(18deg); }
+.ct-d::after{ width:42px;height:42px;border:2px solid rgba(26,56,120,0.12);bottom:22px;right:22px; }
+.ct-b::after{ width:48px;height:48px;border:2px solid rgba(59,130,246,0.14);top:14px;right:20px; }
 
 /* Thumbnail brightens on card hover */
 .ccard:hover .cthumb{ filter:brightness(1.05); }
@@ -714,7 +762,7 @@ body{
 }
 
 /* ── Card body ── */
-.cbody{padding:18px 20px 22px;background:#ffffff;}
+.cbody{padding:14px 20px 22px;background:#ffffff;}
 
 /* Title — Apple Headline style: 17pt Semibold */
 .ctit{
@@ -1091,6 +1139,93 @@ body{
   .ctag{font-size:11px;}           /* Stays at Apple minimum */
 }
 
+/* =====================
+   GRAIN TEXTURE — film noise overlay
+   Inspired by: Linear, Basement Studio, Craft docs
+   Adds tactile depth without competing with content
+   ===================== */
+body::after{
+  content:'';
+  position:fixed;inset:0;z-index:0;
+  pointer-events:none;
+  opacity:0.030;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.80' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size:220px 220px;
+  mix-blend-mode:overlay;
+}
+.dark body::after{opacity:0.040;}
+
+/* =====================
+   BRAND STRIP — social proof
+   Seen on: every top-tier portfolio (Maxime Daillant, Michal Malewicz, etc.)
+   Company names in faded display type — credibility without logos
+   ===================== */
+.brands-strip{
+  display:flex;flex-direction:column;align-items:center;
+  gap:14px;
+  padding:4px 0 60px;
+}
+.brands-lbl{
+  font-size:11px;font-weight:600;
+  letter-spacing:.09em;text-transform:uppercase;
+  color:var(--text-3);
+}
+.brands-row{
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:0;
+}
+.brand-name{
+  font-family:'Atkinson Hyperlegible Next',sans-serif;
+  font-size:18px;font-weight:400;
+  letter-spacing:-.014em;
+  color:var(--text);
+  opacity:.22;
+  padding:4px 22px;
+  white-space:nowrap;
+  transition:opacity var(--dur-base) var(--ease);
+  cursor:default;
+  user-select:none;
+}
+.brand-name:hover{opacity:.55;}
+.brand-sep{
+  width:4px;height:4px;border-radius:50%;
+  background:var(--text-3);
+  opacity:.25;flex-shrink:0;align-self:center;
+}
+
+/* =====================
+   THUMBNAIL BOTTOM FADE — bleeds thumbnail into card body
+   ===================== */
+.thumb-fade{
+  position:absolute;bottom:0;left:0;right:0;
+  height:60px;
+  background:linear-gradient(to bottom,transparent 0%,#ffffff 100%);
+  pointer-events:none;z-index:3;
+}
+.dark .thumb-fade{
+  background:linear-gradient(to bottom,transparent 0%,rgba(18,22,38,1) 100%);
+}
+
+/* ── count-up animated values ── */
+.count-val{
+  font-variant-numeric:tabular-nums;
+  transition:opacity .1s;
+}
+
+/* Responsive brand strip */
+@media(max-width:768px){
+  .brand-name{font-size:16px;padding:4px 16px;}
+}
+@media(max-width:640px){
+  .brands-strip{gap:10px;padding:0 0 48px;}
+  .brand-name{font-size:15px;padding:4px 12px;}
+}
+@media(max-width:480px){
+  .brands-strip{padding:0 0 36px;}
+  .brand-name{font-size:14px;padding:4px 9px;}
+  .brand-sep{display:none;}
+}
+
 /* ── Landscape phones: short viewport (max-height:500px) ── */
 @media(max-height:500px) and (orientation:landscape){
   .nav-bar{top:4px;}
@@ -1246,22 +1381,22 @@ body{
       <div class="impact-row">
         <div class="impact-item">
           <span class="icon"><svg width="15" height="15"><use href="#ico-cart"></use></svg></span>
-          Checkout CVR +18% · Coursera
+          Checkout CVR <span class="count-val" data-to="18" data-prefix="+" data-suffix="%">+18%</span> · Coursera
         </div>
         <span class="impact-sep"></span>
         <div class="impact-item">
           <span class="icon"><svg width="15" height="15"><use href="#ico-trend-down"></use></svg></span>
-          Chargebacks ↓ 73% · Coursera
+          Chargebacks ↓ <span class="count-val" data-to="73" data-suffix="%">73%</span> · Coursera
         </div>
         <span class="impact-sep"></span>
         <div class="impact-item">
           <span class="icon"><svg width="15" height="15"><use href="#ico-groups"></use></svg></span>
-          100M+ MAU · OLX Autos
+          <span class="count-val" data-to="100" data-suffix="M+">100M+</span> MAU · OLX Autos
         </div>
         <span class="impact-sep"></span>
         <div class="impact-item">
           <span class="icon"><svg width="15" height="15"><use href="#ico-chart"></use></svg></span>
-          Dealer CVR +27% · Cars24
+          Dealer CVR <span class="count-val" data-to="27" data-prefix="+" data-suffix="%">+27%</span> · Cars24
         </div>
       </div>
 
@@ -1280,6 +1415,22 @@ body{
     </section>
 
   </div><!-- /container -->
+
+  <!-- BRAND STRIP — social proof -->
+  <div class="container">
+    <div class="brands-strip">
+      <p class="brands-lbl">Worked with teams at</p>
+      <div class="brands-row">
+        <span class="brand-name">Coursera</span>
+        <span class="brand-sep"></span>
+        <span class="brand-name">OLX Autos</span>
+        <span class="brand-sep"></span>
+        <span class="brand-name">Cars24</span>
+        <span class="brand-sep"></span>
+        <span class="brand-name">Darwinbox</span>
+      </div>
+    </div>
+  </div>
 
   <!-- CASE STUDIES — full-width, outside container -->
   <section class="cs-section" style="padding-top:64px;">
@@ -1300,6 +1451,7 @@ body{
                 <div class="lock-chip"><span class="ms">lock</span>Coming soon</div>
               </div>
               <div class="cthumb-co">Coursera · EdTech</div>
+              <div class="thumb-fade"></div>
             </div>
             <div class="cbody">
               <div class="ctit">Checkout & Fraud Reduction</div>
@@ -1319,6 +1471,7 @@ body{
                 <div class="lock-chip"><span class="ms">lock</span>Coming soon</div>
               </div>
               <div class="cthumb-co">Coursera · AI</div>
+              <div class="thumb-fade"></div>
             </div>
             <div class="cbody">
               <div class="ctit">AI Learning Companion</div>
@@ -1338,6 +1491,7 @@ body{
                 <div class="lock-chip"><span class="ms">lock</span>Coming soon</div>
               </div>
               <div class="cthumb-co">OLX Autos · Consumer</div>
+              <div class="thumb-fade"></div>
             </div>
             <div class="cbody">
               <div class="ctit">Search & Discovery</div>
@@ -1357,6 +1511,7 @@ body{
                 <div class="lock-chip"><span class="ms">lock</span>Coming soon</div>
               </div>
               <div class="cthumb-co">OLX Autos · Operations</div>
+              <div class="thumb-fade"></div>
             </div>
             <div class="cbody">
               <div class="ctit">Field Inspections App</div>
@@ -1376,6 +1531,7 @@ body{
                 <div class="lock-chip"><span class="ms">lock</span>Coming soon</div>
               </div>
               <div class="cthumb-co">Darwinbox · HRTech</div>
+              <div class="thumb-fade"></div>
             </div>
             <div class="cbody">
               <div class="ctit">Talent Hub Platform</div>
@@ -1395,6 +1551,7 @@ body{
                 <div class="lock-chip"><span class="ms">lock</span>Coming soon</div>
               </div>
               <div class="cthumb-co">Cars24 · Automotive</div>
+              <div class="thumb-fade"></div>
             </div>
             <div class="cbody">
               <div class="ctit">Dealer Activation Platform</div>
@@ -1676,6 +1833,51 @@ setInterval(rotateWord, 3000);
     pos = ((touchStartPos + dx) % LOOP_W + LOOP_W) % LOOP_W;
   }, {passive:true});
   grid.addEventListener('touchend', () => { paused = false; });
+})();
+
+/* =====================
+   COUNT-UP ANIMATION — impact stats in hero
+   easeOutCubic curve, 1.6s duration
+   Starts when hero is in view (immediately on first load)
+   ===================== */
+(function(){
+  const els = document.querySelectorAll('.count-val');
+  if(!els.length) return;
+
+  const DUR = 1600; /* ms */
+
+  function animateCount(el){
+    const to      = parseFloat(el.dataset.to);
+    const prefix  = el.dataset.prefix  || '';
+    const suffix  = el.dataset.suffix  || '';
+    const start   = performance.now();
+
+    function frame(now){
+      const t = Math.min((now - start) / DUR, 1);
+      /* easeOutCubic */
+      const eased   = 1 - Math.pow(1 - t, 3);
+      const current = Math.round(to * eased);
+      el.textContent = prefix + current + suffix;
+      if(t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* Use IntersectionObserver so it fires when visible
+     (also handles cases where hero is off-screen on slow loads) */
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          animateCount(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    els.forEach(el => io.observe(el));
+  } else {
+    els.forEach(animateCount);
+  }
 })();
 </script>
 </body>
