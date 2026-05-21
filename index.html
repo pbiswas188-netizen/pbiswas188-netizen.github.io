@@ -1213,6 +1213,14 @@ body{
 }
 .launch-banner .ms{font-size:15px;color:var(--indigo);animation:banner-pulse 3s ease-in-out infinite;}
 @keyframes banner-pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
+.banner-cd{
+  font-variant-numeric:tabular-nums;
+  font-weight:600;
+  color:var(--indigo);
+  letter-spacing:.02em;
+}
+/* On mobile, hide the LinkedIn link but keep the countdown */
+.banner-dot-2{ }
 .launch-banner a{
   color:var(--indigo);font-weight:600;
   text-decoration:none;
@@ -1522,8 +1530,9 @@ body{
 }
 /* banner responsive */
 @media(max-width:640px){
-  /* Hide LinkedIn link — keep it a single short line */
+  /* Hide LinkedIn link + second dot — keep countdown */
   .launch-banner .banner-dot,
+  .launch-banner .banner-dot-2,
   .launch-banner a{ display:none; }
   .launch-banner{ font-size:11px; gap:6px; padding:7px 16px; justify-content:center; }
 }
@@ -1729,6 +1738,8 @@ body::after{
   <span class="ms">auto_awesome</span>
   Full portfolio launching soon
   <span class="banner-dot"></span>
+  <span class="banner-cd" id="bannerCd">--d : --h : --m</span>
+  <span class="banner-dot banner-dot-2"></span>
   <a href="https://www.linkedin.com/in/pb188/" target="_blank">Follow on LinkedIn for updates →</a>
 </div>
 
@@ -2308,7 +2319,7 @@ setInterval(rotateWord, 3000);
   const hEl = document.getElementById('cd-h');
   const mEl = document.getElementById('cd-m');
   const sEl = document.getElementById('cd-s');
-  const cdEl = document.getElementById('countdown');
+  const bannerCd = document.getElementById('bannerCd');
   if(!dEl) return;
   function pad(n){ return String(n).padStart(2,'0'); }
   function tick(){
@@ -2316,6 +2327,7 @@ setInterval(rotateWord, 3000);
     const diff = TARGET - now;
     if(diff <= 0){
       dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = '00';
+      if(bannerCd) bannerCd.textContent = '00d : 00h : 00m';
       return;
     }
     const d = Math.floor(diff / 86400000);
@@ -2326,6 +2338,7 @@ setInterval(rotateWord, 3000);
     hEl.textContent = pad(h);
     mEl.textContent = pad(m);
     sEl.textContent = pad(s);
+    if(bannerCd) bannerCd.textContent = pad(d)+'d : '+pad(h)+'h : '+pad(m)+'m';
   }
   tick();
   setInterval(tick, 1000);
