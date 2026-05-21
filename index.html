@@ -178,14 +178,10 @@
   border-color:rgba(77,148,255,0.40);
   box-shadow:0 2px 0 rgba(255,255,255,0.14) inset,0 12px 36px rgba(77,148,255,0.22),0 1px 4px rgba(0,0,0,0.20);
 }
-.dark .cta-p:hover{
-  background:rgba(77,148,255,0.92);
-  box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 18px 48px rgba(77,148,255,0.32),0 2px 6px rgba(0,0,0,0.25);
-}
+/* dark cta-p hover → @media (hover:hover) block */
 .dark .cta-s{ color:var(--text-2); background:none; box-shadow:none; }
 .dark .cta-s .ul{ text-decoration-color:var(--border); }
-.dark .cta-s:hover{ color:var(--text); background:none; }
-.dark .cta-s:hover .ul{ text-decoration-color:var(--text-3); }
+/* dark cta-s hover → @media (hover:hover) block */
 .dark .cta-s::before{ display:none; }
 /* Dark mode avail badge */
 .dark .avail{
@@ -341,7 +337,7 @@ body{
   letter-spacing:-.01em;
   transition:transform var(--dur-fast) var(--ease-spr);
 }
-.nav-logo:hover .logo-mark{transform:scale(1.08);}
+/* nav-logo hover → @media (hover:hover) block */
 .nav-name{
   font-size:14px;font-weight:500;   /* Apple Subhead: 15pt ≈ 14px web */
   line-height:1.36;                 /* Apple Subhead: 20/15 = 1.33 */
@@ -392,11 +388,7 @@ body{
   transition:all var(--dur-fast) var(--ease-spr);
   letter-spacing:-.01em;
 }
-.nav-hire:hover{
-  background:rgba(0,80,200,0.94);
-  box-shadow:0 2px 0 rgba(255,255,255,0.32) inset,0 12px 30px rgba(0,80,200,0.30),0 1px 4px rgba(0,0,0,0.10);
-  transform:translateY(-2px) scale(1.02);
-}
+/* nav-hire hover → @media (hover:hover) block */
 .nav-hire:active{transform:translateY(0) scale(0.98);}
 
 /* Mode toggle — glass circle */
@@ -538,11 +530,7 @@ body{
   text-decoration:none;cursor:pointer;
   transition:all var(--dur-fast) var(--ease-spr);
 }
-.cta-p:hover{
-  background:rgba(0,80,200,0.96);
-  box-shadow:0 2px 0 rgba(255,255,255,0.30) inset,0 18px 48px rgba(0,80,200,0.34),0 2px 6px rgba(0,0,0,0.10);
-  transform:translateY(-2px) scale(1.02);
-}
+/* cta-p hover → @media (hover:hover) block */
 .cta-p:active{transform:translateY(0) scale(0.98);}
 
 /* LinkedIn CTA — official LinkedIn blue */
@@ -570,8 +558,7 @@ body{
   text-decoration-thickness:1px;
   transition:text-decoration-color var(--dur-fast) var(--ease);
 }
-.cta-s:hover{ color:var(--text); opacity:1; }
-.cta-s:hover .ul{ text-decoration-color:var(--text-3); }
+/* cta-s hover → @media (hover:hover) block */
 .cta-s:active{ opacity:.7; }
 .cta-s svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
 
@@ -662,11 +649,7 @@ body{
   transform:scale(0.97);
   transition:opacity .25s var(--ease), transform .25s var(--ease-spr), box-shadow .25s var(--ease);
 }
-.cs-grid.paused .ccard:hover{
-  opacity:1;
-  transform:translateY(-6px) scale(1.02);
-  box-shadow:var(--glass-shd-hover);
-}
+/* paused ccard hover → @media (hover:hover) block */
 
 .ccard{
   background:#ffffff;
@@ -679,10 +662,7 @@ body{
              box-shadow var(--dur-base) var(--ease);
 }
 .ccard::before{display:none;}
-.ccard:hover{
-  transform:translateY(-6px) scale(1.01);
-  box-shadow:0 16px 48px rgba(0,0,0,0.13),0 3px 10px rgba(0,0,0,0.07);
-}
+/* ccard hover → @media (hover:hover) block */
 .cthumb{
   width:100%;height:168px;
   position:relative;overflow:hidden;
@@ -750,8 +730,7 @@ body{
 .ct-d::after{ width:42px;height:42px;border:2px solid rgba(26,56,120,0.12);bottom:22px;right:22px; }
 .ct-b::after{ width:48px;height:48px;border:2px solid rgba(59,130,246,0.14);top:14px;right:20px; }
 
-/* Thumbnail brightens on card hover */
-.ccard:hover .cthumb{ filter:brightness(1.05); }
+/* ccard:hover .cthumb → @media (hover:hover) block */
 .cthumb{ transition:filter 280ms ease; }
 
 /* ── Lock chip — frosted glass pill ── */
@@ -839,9 +818,7 @@ body{
   border-color:rgba(255,255,255,0.09);
   box-shadow:0 2px 12px rgba(0,0,0,0.40),0 1px 3px rgba(0,0,0,0.30);
 }
-.dark .ccard:hover{
-  box-shadow:0 20px 56px rgba(0,0,0,0.55),0 4px 12px rgba(0,0,0,0.35);
-}
+/* dark ccard hover → @media (hover:hover) block */
 .dark .cbody{background:transparent;}
 .dark .ct-g{background:radial-gradient(ellipse at 38% 38%,rgba(0,86,210,0.28) 0%,rgba(0,86,210,0.12) 100%);}
 .dark .ct-r{background:radial-gradient(ellipse at 65% 32%,rgba(109,40,217,0.28) 0%,rgba(109,40,217,0.10) 100%);}
@@ -902,11 +879,7 @@ body{
   display:flex;align-items:center;justify-content:center;
   transition:all var(--dur-fast) var(--ease-spr);
 }
-.mq-btn:hover{
-  background:var(--glass-strong);
-  box-shadow:var(--glass-shd-hover);
-  transform:translateY(-50%) scale(1.08);
-}
+/* mq-btn hover → @media (hover:hover) block */
 .mq-btn-prev{left:14px;}
 .mq-btn-next{right:14px;}
 .mq-btn .ms{font-size:20px;}
@@ -940,10 +913,7 @@ body{
   height:1px;background:var(--iris-grad);
   pointer-events:none;z-index:2;
 }
-.tcard:hover{
-  transform:translateY(-3px);
-  box-shadow:var(--glass-shd-hover);
-}
+/* tcard hover → @media (hover:hover) block */
 .tq-icon{
   font-family:'Atkinson Hyperlegible Next',sans-serif;
   font-size:20px;line-height:.8;
@@ -1035,14 +1005,127 @@ body{
   color:var(--text-3);text-decoration:none;
   transition:all var(--dur-fast) var(--ease-spr);
 }
-.si:hover{
-  background:var(--glass-strong);
-  box-shadow:var(--glass-shd-hover);
-  color:var(--indigo);
-  transform:translateY(-2px);
-}
+/* si hover → @media (hover:hover) block */
 .si svg{width:14px;height:14px;fill:currentColor;}
 .si svg[fill="none"]{fill:none;} /* preserve multi-colour icons like Topmate */
+
+/* =====================
+   HOVER — cursor devices only
+   @media (hover: hover) and (pointer: fine) targets
+   true-cursor devices (mouse/trackpad). Touch screens
+   (pointer: coarse) are excluded — no sticky-hover bugs.
+   All tap feedback is handled by :active below.
+   ===================== */
+@media (hover: hover) and (pointer: fine) {
+  /* Nav */
+  .nav-logo:hover .logo-mark { transform:scale(1.08); }
+  .nav-hire:hover {
+    background:rgba(0,80,200,0.94);
+    box-shadow:0 2px 0 rgba(255,255,255,0.32) inset,0 12px 30px rgba(0,80,200,0.30),0 1px 4px rgba(0,0,0,0.10);
+    transform:translateY(-2px) scale(1.02);
+  }
+  /* Primary CTA */
+  .cta-p:hover {
+    background:rgba(0,80,200,0.96);
+    box-shadow:0 2px 0 rgba(255,255,255,0.30) inset,0 18px 48px rgba(0,80,200,0.34),0 2px 6px rgba(0,0,0,0.10);
+    transform:translateY(-2px) scale(1.02);
+  }
+  .dark .cta-p:hover {
+    background:rgba(77,148,255,0.92);
+    box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 18px 48px rgba(77,148,255,0.32),0 2px 6px rgba(0,0,0,0.25);
+  }
+  /* Tertiary CTA */
+  .cta-s:hover { color:var(--text); opacity:1; }
+  .cta-s:hover .ul { text-decoration-color:var(--text-3); }
+  .dark .cta-s:hover { color:var(--text); background:none; }
+  .dark .cta-s:hover .ul { text-decoration-color:var(--text-3); }
+  /* Case study cards */
+  .cs-grid.paused .ccard:hover { opacity:1; }
+  .ccard:hover {
+    transform:translateY(-6px) scale(1.01);
+    box-shadow:0 16px 48px rgba(0,0,0,0.13),0 3px 10px rgba(0,0,0,0.07);
+  }
+  .ccard:hover .cthumb { filter:brightness(1.05); }
+  .dark .ccard:hover { box-shadow:0 20px 56px rgba(0,0,0,0.55),0 4px 12px rgba(0,0,0,0.35); }
+  /* Marquee buttons */
+  .mq-btn:hover {
+    background:var(--glass-strong);
+    box-shadow:var(--glass-shd-hover);
+    transform:translateY(-50%) scale(1.08);
+  }
+  /* Testimonial cards */
+  .tcard:hover {
+    transform:translateY(-3px);
+    box-shadow:var(--glass-shd-hover);
+  }
+  /* Social icons */
+  .si:hover {
+    background:var(--glass-strong);
+    box-shadow:var(--glass-shd-hover);
+    color:var(--indigo);
+    transform:translateY(-2px);
+    border-bottom:1px solid var(--indigo-border);
+  }
+  /* Banner link */
+  .launch-banner a:hover { opacity:.75; }
+  /* Stat chips */
+  .stat-cell:hover {
+    transform:translateY(-3px);
+    box-shadow:var(--glass-shd-hover);
+  }
+  .stat-co a:hover { opacity:.65; border-color:rgba(0,0,0,0.40); }
+  .dark .stat-co a:hover { border-color:rgba(255,255,255,0.50); }
+  /* Notify primary CTA */
+  .notify-cta:hover {
+    background:rgba(10,102,194,1);
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 2px 0 rgba(255,255,255,0.28) inset,0 16px 36px rgba(10,102,194,0.32);
+  }
+  /* Notify tertiary CTA */
+  .notify-cta-s:hover { color:var(--text); opacity:1; }
+  .notify-cta-s:hover .ul { text-decoration-color:var(--text-3); }
+  /* Brand names */
+  .brand-name:hover { opacity:.72; }
+}
+
+/* =====================
+   TOUCH / ACTIVE STATES
+   On touch screens (no hover), :active is the only
+   interaction feedback. Keep transforms small —
+   mobile doesn't need lift, needs confirmation.
+   ===================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Cards — subtle scale-down on tap (feels physical) */
+  .ccard:active {
+    transform:scale(0.98);
+    transition:transform 80ms ease;
+  }
+  .tcard:active {
+    transform:scale(0.98);
+    opacity:.88;
+    transition:transform 80ms ease, opacity 80ms ease;
+  }
+  .stat-cell:active {
+    transform:scale(0.97);
+    opacity:.85;
+    transition:transform 80ms ease, opacity 80ms ease;
+  }
+  /* Buttons — confirm the tap */
+  .cta-p:active, .nav-hire:active, .notify-cta:active {
+    transform:scale(0.97);
+    opacity:.88;
+  }
+  /* Tertiary CTAs */
+  .cta-s:active, .notify-cta-s:active { opacity:.55; }
+  /* Social icons */
+  .si:active {
+    background:var(--glass-bg);
+    opacity:.75;
+    transition:opacity 80ms ease;
+  }
+  /* Marquee buttons */
+  .mq-btn:active { opacity:.65; transition:opacity 80ms ease; }
+}
 
 /* =====================
    BREAKPOINTS
@@ -1213,7 +1296,7 @@ body{
   border-bottom:1px solid var(--indigo-border);
   transition:opacity var(--dur-fast) var(--ease);
 }
-.launch-banner a:hover{opacity:.75;}
+/* banner a hover → @media (hover:hover) block */
 .banner-dot{
   width:5px;height:5px;border-radius:50%;
   background:var(--indigo-border);
@@ -1247,10 +1330,7 @@ body{
   transition:transform var(--dur-fast) var(--ease-spr),
              box-shadow var(--dur-fast) var(--ease);
 }
-.stat-cell:hover{
-  transform:translateY(-3px);
-  box-shadow:var(--glass-shd-hover);
-}
+/* stat-cell hover → @media (hover:hover) block */
 /* Iris shimmer on top edge of each pill */
 .stat-cell::before{
   content:'';position:absolute;top:0;left:8%;right:8%;
@@ -1303,9 +1383,8 @@ body{
   padding-bottom:1px;
   transition:border-color var(--dur-fast) var(--ease),opacity var(--dur-fast) var(--ease);
 }
-.stat-co a:hover{opacity:.65;border-color:rgba(0,0,0,0.40);}
+/* stat-co a hover → @media (hover:hover) block */
 .dark .stat-co a{border-color:rgba(255,255,255,0.22);}
-.dark .stat-co a:hover{border-color:rgba(255,255,255,0.50);}
 
 /* =====================
    NOTIFY SECTION — launch hook
@@ -1433,11 +1512,7 @@ body{
   text-decoration:none;letter-spacing:-.01em;
   transition:all var(--dur-fast) var(--ease-spr);
 }
-.notify-cta:hover{
-  background:rgba(10,102,194,1);
-  transform:translateY(-2px) scale(1.02);
-  box-shadow:0 2px 0 rgba(255,255,255,0.28) inset,0 16px 36px rgba(10,102,194,0.32);
-}
+/* notify-cta hover → @media (hover:hover) block */
 .notify-cta svg{width:15px;height:15px;fill:#fff;flex-shrink:0;}
 /* Tertiary CTA — text only with underline */
 .notify-cta-s{
@@ -1463,8 +1538,7 @@ body{
   transition:text-decoration-color var(--dur-fast) var(--ease);
 }
 .notify-cta-s .ms{font-size:16px;opacity:.75;}
-.notify-cta-s:hover{ color:var(--text); opacity:1; }
-.notify-cta-s:hover .ul{ text-decoration-color:var(--text-3); }
+/* notify-cta-s hover → @media (hover:hover) block */
 
 /* Override: .hero .brands-strip — tighter inside hero */
 .hero .brands-strip{
@@ -1575,7 +1649,7 @@ body::after{
   cursor:default;
   user-select:none;
 }
-.brand-name:hover{opacity:.72;}
+/* brand-name hover → @media (hover:hover) block */
 .brand-sep{
   width:4px;height:4px;border-radius:50%;
   background:var(--text-3);
