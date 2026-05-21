@@ -1030,11 +1030,12 @@ body{
 .site-footer::before{ display:none; }
 .footer-l{display:flex;flex-direction:column;gap:4px;}
 .f-copy{
-  font-size:13px;                   /* Apple Footnote: 13pt */
-  line-height:1.38;                 /* Apple Footnote: 18/13 = 1.38 */
+  font-size:13px;
+  line-height:1.38;
   letter-spacing:-.006em;
   color:var(--text-2);
 }
+.f-copy-short{ display:none; }
 .f-loc{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--text-3);}
 .f-loc .ms{font-size:15px;}
 .f-socials{display:flex;align-items:center;gap:6px;}
@@ -1173,8 +1174,10 @@ body{
   /* Swipe hint */
   .swipe-hint{display:flex;}
 
-  /* Footer */
-  .site-footer{flex-direction:column;align-items:flex-start;gap:8px;}
+  /* Footer: single row — short copy left, icons right */
+  .site-footer{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:8px;}
+  .f-copy-full{display:none;}
+  .f-copy-short{display:inline;}
 }
 
 /* ── Tier 7: Small phones (Samsung Galaxy S8, iPhone SE) ── */
@@ -1989,7 +1992,8 @@ body::after{
   <!-- FOOTER — full width -->
   <footer class="site-footer">
     <div class="footer-l">
-      <span class="f-copy">© 2026 &nbsp;·&nbsp; Designed and built by <strong style="color:var(--text);font-weight:600;">PB</strong> through lots of prompting in <strong style="color:var(--text);font-weight:600;">Claude Code</strong></span>
+      <span class="f-copy f-copy-full">© 2026 &nbsp;·&nbsp; Designed and built by <strong style="color:var(--text);font-weight:600;">PB</strong> through lots of prompting in <strong style="color:var(--text);font-weight:600;">Claude Code</strong></span>
+      <span class="f-copy f-copy-short">© 2026 &nbsp;·&nbsp; <strong style="color:var(--text);font-weight:600;">Pratik Biswas</strong></span>
     </div>
     <div class="f-socials">
       <a class="si" href="https://www.linkedin.com/in/pb188/" target="_blank" title="LinkedIn">
