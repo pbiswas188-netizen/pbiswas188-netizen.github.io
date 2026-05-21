@@ -648,6 +648,7 @@ body{
 }
 .cs-note{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-3);}
 .cs-note .icon{color:var(--text-3);}
+.cs-note-short{display:none;}
 
 /* Marquee viewport — clips horizontally only so hover lift isn't cut */
 .cs-slider-wrap{
@@ -1139,9 +1140,9 @@ body{
   .hero-h1{font-size:clamp(30px,9vw,44px);letter-spacing:-.022em;}
   /* h1 lines are now all block — no nowrap override needed */
   .hero-role{
-    font-size:10.5px;padding:5px 12px;
-    flex-wrap:nowrap;            /* prevent icon breaking to own line */
-    overflow:hidden;
+    font-size:10px;padding:5px 12px;
+    white-space:nowrap;
+    letter-spacing:.07em;        /* tighter tracking so it fits */
   }
   .hero-role .icon{display:none;} /* hide person icon on small phones */
   .hero-sub{font-size:13px;margin-bottom:20px;max-width:100%;}
@@ -1153,9 +1154,13 @@ body{
   .cta-row{flex-direction:column;width:100%;align-items:stretch;gap:8px;}
   .cta-p,.cta-s{justify-content:center;width:100%;padding:14px 24px;font-size:14px;}
 
-  /* Hire me: icon only */
-  .nav-hire .hire-txt{display:none;}
-  .nav-hire{padding:6px 11px;}
+  /* Let's talk: hidden on mobile — green dot + dark mode is enough */
+  .nav-hire{display:none;}
+
+  /* Case study header: stack on mobile, swap copy */
+  .cs-header{flex-direction:column;align-items:flex-start;gap:4px;margin-bottom:14px;}
+  .cs-note-full{display:none;}
+  .cs-note-short{display:inline;}
 
   /* Cards: swipe-friendly width */
   .cs-section{padding-top:36px !important;}
@@ -1513,9 +1518,14 @@ body{
   .teaser-chip{font-size:11px;padding:4px 11px;}
 }
 /* banner responsive */
-@media(max-width:480px){
-  .launch-banner{font-size:11px;gap:7px;padding:8px 16px;}
-  .banner-dot{display:none;}
+@media(max-width:640px){
+  /* Hide LinkedIn link — keep it a single short line */
+  .launch-banner .banner-dot,
+  .launch-banner a{ display:none; }
+  .launch-banner{ font-size:11px; gap:6px; padding:7px 16px; justify-content:center; }
+}
+@media(max-width:360px){
+  .launch-banner{ font-size:10.5px; padding:6px 14px; }
 }
 
 /* =====================
@@ -1809,7 +1819,8 @@ body::after{
         <p class="sec-lbl">6 case studies · coming soon</p>
         <span class="cs-note">
           <span class="icon"><svg width="13" height="13"><use href="#ico-lock"></use></svg></span>
-          Process, decisions &amp; outcomes — unlocking at launch
+          <span class="cs-note-full">Process, decisions &amp; outcomes — unlocking at launch</span>
+          <span class="cs-note-short">Unlocking at launch</span>
         </span>
       </div>
       <div class="cs-slider-wrap">
