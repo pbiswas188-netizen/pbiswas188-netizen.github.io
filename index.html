@@ -182,17 +182,10 @@
   background:rgba(77,148,255,0.92);
   box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 18px 48px rgba(77,148,255,0.32),0 2px 6px rgba(0,0,0,0.25);
 }
-.dark .cta-s{
-  color:var(--text-2);
-  border-bottom-color:var(--border);
-  background:none;
-  box-shadow:none;
-}
-.dark .cta-s:hover{
-  color:var(--text);
-  border-bottom-color:var(--text-3);
-  background:none;
-}
+.dark .cta-s{ color:var(--text-2); background:none; box-shadow:none; }
+.dark .cta-s .ul{ text-decoration-color:var(--border); }
+.dark .cta-s:hover{ color:var(--text); background:none; }
+.dark .cta-s:hover .ul{ text-decoration-color:var(--text-3); }
 .dark .cta-s::before{ display:none; }
 /* Dark mode avail badge */
 .dark .avail{
@@ -565,12 +558,20 @@ body{
   font-size:15px;font-weight:500;
   line-height:1.33;
   letter-spacing:-.015em;
-  text-decoration:none;cursor:pointer;
-  border-bottom:1px solid var(--border);
-  transition:color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease),opacity var(--dur-fast) var(--ease);
+  text-decoration:none;
+  cursor:pointer;
+  transition:color var(--dur-fast) var(--ease),opacity var(--dur-fast) var(--ease);
 }
 .cta-s::before{ display:none; }
-.cta-s:hover{ color:var(--text); border-color:var(--text-3); opacity:1; }
+.cta-s .ul{
+  text-decoration:underline;
+  text-decoration-color:var(--border);
+  text-underline-offset:4px;
+  text-decoration-thickness:1px;
+  transition:text-decoration-color var(--dur-fast) var(--ease);
+}
+.cta-s:hover{ color:var(--text); opacity:1; }
+.cta-s:hover .ul{ text-decoration-color:var(--text-3); }
 .cta-s:active{ opacity:.7; }
 .cta-s svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
 
@@ -1446,20 +1447,24 @@ body{
   border:none;
   border-radius:0;
   box-shadow:none;
-  border-bottom:1px solid var(--border);
   color:var(--text-2);
   font-size:15px;font-weight:500;
   font-family:'Inter',sans-serif;
-  text-decoration:none;letter-spacing:-.015em;
+  letter-spacing:-.015em;
+  text-decoration:none;
   cursor:pointer;
-  transition:color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease),opacity var(--dur-fast) var(--ease);
+  transition:color var(--dur-fast) var(--ease),opacity var(--dur-fast) var(--ease);
+}
+.notify-cta-s .ul{
+  text-decoration:underline;
+  text-decoration-color:var(--border);
+  text-underline-offset:4px;
+  text-decoration-thickness:1px;
+  transition:text-decoration-color var(--dur-fast) var(--ease);
 }
 .notify-cta-s .ms{font-size:16px;opacity:.75;}
-.notify-cta-s:hover{
-  color:var(--text);
-  border-bottom-color:var(--text-3);
-  opacity:1;
-}
+.notify-cta-s:hover{ color:var(--text); opacity:1; }
+.notify-cta-s:hover .ul{ text-decoration-color:var(--text-3); }
 
 /* Override: .hero .brands-strip — tighter inside hero */
 .hero .brands-strip{
@@ -1802,7 +1807,7 @@ body::after{
         <a class="cta-s" href="https://www.linkedin.com/in/pb188/" target="_blank">
           <!-- Official LinkedIn icon -->
           <svg viewBox="0 0 24 24" width="16" height="16" fill="#0a66c2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
+          <span class="ul">LinkedIn</span>
         </a>
       </div>
 
@@ -1977,7 +1982,7 @@ body::after{
         </a>
         <a class="notify-cta-s" href="https://calendly.com/p-biswas188/15min" target="_blank">
           <span class="ms">calendar_today</span>
-          Book a call
+          <span class="ul">Book a call</span>
         </a>
       </div>
     </div>
