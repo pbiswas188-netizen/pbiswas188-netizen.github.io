@@ -9,51 +9,143 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
-/* =====================
-   APPLE LIQUID GLASS — Design System
-   WWDC 2025 · Frosted glass surfaces,
-   specular highlights, prismatic borders,
-   layered depth & vibrancy
-   ===================== */
+/* ═══════════════════════════════════════════════════════
+   PRATIK PORTFOLIO DS — v2.0 Token Layer
+   Primitives → Semantic → Portfolio aliases.
+   Source of truth: design-preview/design-system.html
+   DO NOT edit token values here — update the DS first.
+   ═══════════════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
-:root{
-  /* Page gradient stops — Relevnt Fog palette */
-  --bg-a:#f4f6fa;   /* Fog */
-  --bg-b:#f5f5fb;
-  --bg-c:#f4f7fb;
-  --bg-d:#f0faf6;   /* hint of Mint at the bottom */
+:root {
 
-  /* Glass surfaces */
-  --glass:        rgba(255,255,255,0.54);
-  --glass-strong: rgba(255,255,255,0.76);
-  --glass-tinted: rgba(230,232,255,0.50);
-  --glass-border: rgba(255,255,255,0.72);
-  --glass-rim:    rgba(255,255,255,0.92);  /* specular top edge */
-  --glass-blur:   blur(48px) saturate(200%) brightness(1.06);
-  --glass-blur-md:blur(32px) saturate(180%) brightness(1.04);
-  --glass-blur-sm:blur(20px) saturate(160%) brightness(1.02);
+  /* ─────────────────────────────────────────
+     TIER 1 — Primitives (raw values, DS only)
+     ───────────────────────────────────────── */
+  --prim-fog-50:   #f4f6fa;
+  --prim-fog-100:  #f5f5fb;
+  --prim-fog-200:  #f4f7fb;
+  --prim-fog-300:  #f0faf6;
 
-  /* Glass shadows — float + specular combined */
-  --glass-shd:
-    0 2.5px 0 0 rgba(255,255,255,0.90) inset,  /* top specular line */
-    0 -0.5px 0 0 rgba(0,0,0,0.04) inset,        /* bottom subtle edge */
-    1px 0 0 0 rgba(255,255,255,0.40) inset,      /* left glint */
-    0 20px 60px rgba(0,86,210,0.10),           /* Indigo float shadow */
+  --prim-navy-950: #081020;
+  --prim-navy-900: #0d1428;
+  --prim-navy-800: #111830;
+  --prim-navy-700: #0a1222;
+  --prim-navy-100: #1a1f2e;
+
+  --prim-indigo-700: #003494;
+  --prim-indigo-600: #0044B0;
+  --prim-indigo-500: #0056D2;
+  --prim-indigo-400: #4D94FF;
+  --prim-indigo-300: #7AB5FF;
+  --prim-indigo-50:  rgba(0,86,210,0.10);
+
+  --prim-mint-500:  #22c55e;
+  --prim-mint-400:  #34d399;
+  --prim-mint-700:  #15803d;
+  --prim-mint-50:   rgba(34,197,94,0.10);
+
+  --prim-amber-500: #f59e0b;
+  --prim-amber-700: #d97706;
+  --prim-amber-50:  rgba(245,158,11,0.10);
+
+  --prim-red-500:   #ef4444;
+  --prim-red-700:   #dc2626;
+  --prim-red-50:    rgba(239,68,68,0.10);
+
+  --prim-blue-500:  #3b82f6;
+  --prim-blue-700:  #2563eb;
+  --prim-blue-50:   rgba(59,130,246,0.10);
+
+  --prim-slate-400: #6474b8;
+  --prim-white:     #ffffff;
+
+  --prim-radius-2:    6px;
+  --prim-radius-5:    12px;
+  --prim-radius-6:    16px;
+  --prim-radius-8:    22px;
+  --prim-radius-9:    30px;
+  --prim-radius-full: 9999px;
+
+  --prim-dur-0:   0ms;
+  --prim-dur-200: 200ms;
+  --prim-dur-300: 300ms;
+
+  /* ─────────────────────────────────────────
+     TIER 2 — Semantic (light mode defaults)
+     ───────────────────────────────────────── */
+
+  /* Text */
+  --text-primary:   var(--prim-navy-950);
+  --text-secondary: #3d4460;
+  --text-tertiary:  #8890a8;
+  --text-on-brand:  var(--prim-white);
+  --text-disabled:  rgba(8,16,32,0.35);
+
+  /* Surfaces */
+  --surface-base:     rgba(255,255,255,0.54);
+  --surface-elevated: rgba(255,255,255,0.76);
+  --surface-overlay:  rgba(230,232,255,0.50);
+  --surface-solid:    var(--prim-white);
+  --surface-inset:    rgba(0,0,0,0.03);
+
+  /* Borders */
+  --border-default:  rgba(255,255,255,0.72);
+  --border-subtle:   rgba(255,255,255,0.55);
+  --border-faint:    rgba(255,255,255,0.35);
+  --border-strong:   rgba(0,0,0,0.08);
+  --border-brand:    rgba(0,86,210,0.28);
+  --border-focus:    var(--prim-indigo-500);
+
+  /* Brand */
+  --color-brand:        var(--prim-indigo-500);
+  --color-brand-dark:   var(--prim-indigo-600);
+  --color-brand-darker: var(--prim-indigo-700);
+  --color-brand-light:  var(--prim-indigo-50);
+
+  /* Status */
+  --color-success:      var(--prim-mint-500);
+  --color-success-text: var(--prim-mint-700);
+  --color-success-bg:   var(--prim-mint-50);
+  --color-warning:      var(--prim-amber-500);
+  --color-warning-text: var(--prim-amber-700);
+  --color-warning-bg:   var(--prim-amber-50);
+  --color-danger:       var(--prim-red-500);
+  --color-danger-text:  var(--prim-red-700);
+  --color-danger-bg:    var(--prim-red-50);
+  --color-info:         var(--prim-blue-500);
+  --color-info-text:    var(--prim-blue-700);
+  --color-info-bg:      var(--prim-blue-50);
+
+  /* Backdrop blur */
+  --blur-sm: blur(20px) saturate(160%) brightness(1.02);
+  --blur-md: blur(32px) saturate(180%) brightness(1.04);
+  --blur-lg: blur(48px) saturate(200%) brightness(1.06);
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm:
+    0 2px 0 0 rgba(255,255,255,0.85) inset,
+    0 8px 28px rgba(0,86,210,0.07),
+    0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md:
+    0 2.5px 0 0 rgba(255,255,255,0.90) inset,
+    0 -0.5px 0 0 rgba(0,0,0,0.04) inset,
+    1px 0 0 0 rgba(255,255,255,0.40) inset,
+    0 20px 60px rgba(0,86,210,0.10),
     0 1px 4px rgba(0,0,0,0.05);
-  --glass-shd-hover:
+  --shadow-lg:
     0 2.5px 0 0 rgba(255,255,255,0.95) inset,
     0 -0.5px 0 0 rgba(0,0,0,0.04) inset,
     1px 0 0 0 rgba(255,255,255,0.50) inset,
     0 32px 80px rgba(0,86,210,0.16),
     0 2px 8px rgba(0,0,0,0.07);
-  --glass-shd-sm:
-    0 2px 0 0 rgba(255,255,255,0.85) inset,
-    0 8px 28px rgba(0,86,210,0.07),
-    0 1px 3px rgba(0,0,0,0.04);
+  --shadow-card:       0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-card-hover: 0 16px 48px rgba(0,0,0,0.13), 0 3px 10px rgba(0,0,0,0.07);
+  --shadow-focus:      0 0 0 3px rgba(0,86,210,0.22);
 
-  /* Iridescent shimmer gradient (top edge pseudo-element) */
-  --iris-grad: linear-gradient(90deg,
+  /* Shimmer */
+  --shimmer-iris: linear-gradient(90deg,
     transparent 0%,
     rgba(255,255,255,0.95) 15%,
     rgba(190,200,255,0.80) 35%,
@@ -63,86 +155,139 @@
     transparent 100%
   );
 
-  /* Palette — Relevnt Design System */
-  --text:          #081020;           /* Deep Navy */
-  --text-2:        #3d4460;           /* Slate-derived mid */
-  --text-3:        #8890a8;           /* Muted blue-grey */
-  --indigo:        #0056D2;           /* Indigo */
-  --indigo-dark:   #0044B0;
-  --indigo-light:  rgba(0,86,210,0.10);
-  --indigo-border: rgba(0,86,210,0.28);
-  --mint:          #34d399;           /* Mint-derived, readable */
-  --mint-light:    rgba(199,249,233,0.40);
-  --border:        rgba(255,255,255,0.55);
-  --border-s:      rgba(255,255,255,0.35);
-  --surface:       #ffffff;           /* Surface */
-  --surface-s:     rgba(255,255,255,0.72);
-  --positive:      #22c55e;
-  --warning:       #f59e0b;
-  --info:          #3b82f6;
-  --critical:      #ef4444;
-  --neutral:       #6474b8;
-
-  /* Blob — Blue→Purple gradient, bouncing */
-  --blob-a: radial-gradient(circle at center, rgba(0,86,210,0.38) 0%, rgba(109,40,217,0.22) 55%, transparent 80%);
+  /* Motion */
+  --duration-fast:    var(--prim-dur-200);
+  --duration-base:    var(--prim-dur-300);
+  --easing-standard:  cubic-bezier(0.4,0,0.2,1);
+  --easing-spring:    cubic-bezier(0.34,1.4,0.64,1);
 
   /* Radius */
-  --radius-sm:   6px;
-  --radius-md:   12px;
-  --radius-lg:   16px;
-  --radius-xl:   22px;
-  --radius-2xl:  30px;
-  --radius-full: 9999px;
+  --radius-sm:   var(--prim-radius-2);
+  --radius-md:   var(--prim-radius-5);
+  --radius-lg:   var(--prim-radius-6);
+  --radius-xl:   var(--prim-radius-8);
+  --radius-2xl:  var(--prim-radius-9);
+  --radius-full: var(--prim-radius-full);
 
-  /* Motion */
-  --dur-fast: 200ms;
-  --dur-base: 300ms;
-  --ease:     cubic-bezier(0.4,0,0.2,1);
-  --ease-spr: cubic-bezier(0.34,1.4,0.64,1);
+  /* Layout */
+  --cpad: 48px;
 
-  /* Legacy compat */
-  --shadow-xs:    0 1px 2px rgba(0,0,0,0.04);
-  --shadow-sm:    var(--glass-shd-sm);
-  --shadow-md:    var(--glass-shd-hover);
-  --shadow-focus: 0 0 0 3px rgba(0,86,210,0.22);
+  /* ─────────────────────────────────────────
+     TIER 3 — Portfolio aliases
+     Old variable names → DS semantic tokens.
+     All downstream CSS continues to work
+     without any renames.
+     ───────────────────────────────────────── */
+
+  /* Page background gradient */
+  --bg-a: var(--prim-fog-50);
+  --bg-b: var(--prim-fog-100);
+  --bg-c: var(--prim-fog-200);
+  --bg-d: var(--prim-fog-300);
+
+  /* Glass surfaces → DS surface tokens */
+  --glass:         var(--surface-base);
+  --glass-strong:  var(--surface-elevated);
+  --glass-tinted:  var(--surface-overlay);
+  --glass-bg:      var(--surface-base);
+  --glass-border:  var(--border-default);
+  --glass-rim:     rgba(255,255,255,0.92);
+  --glass-blur:    var(--blur-lg);
+  --glass-blur-md: var(--blur-md);
+  --glass-blur-sm: var(--blur-sm);
+
+  /* Shadow aliases → DS elevation tokens */
+  --glass-shd:       var(--shadow-md);
+  --glass-shd-hover: var(--shadow-lg);
+  --glass-shd-sm:    var(--shadow-sm);
+
+  /* Shimmer alias */
+  --iris-grad: var(--shimmer-iris);
+
+  /* Text aliases → DS text tokens */
+  --text:   var(--text-primary);
+  --text-2: var(--text-secondary);
+  --text-3: var(--text-tertiary);
+
+  /* Brand aliases → DS brand tokens */
+  --indigo:        var(--color-brand);
+  --indigo-dark:   var(--color-brand-dark);
+  --indigo-light:  var(--color-brand-light);
+  --indigo-border: var(--border-brand);
+
+  /* Status aliases → DS status tokens */
+  --mint:       var(--prim-mint-400);
+  --mint-light: rgba(199,249,233,0.40);
+  --positive:   var(--color-success);
+  --warning:    var(--color-warning);
+  --info:       var(--color-info);
+  --critical:   var(--color-danger);
+  --neutral:    var(--prim-slate-400);
+
+  /* Border aliases */
+  --border:   var(--border-subtle);
+  --border-s: var(--border-faint);
+  --surface:  var(--surface-solid);
+  --surface-s:var(--surface-elevated);
+
+  /* Motion aliases → DS motion tokens */
+  --dur-fast: var(--duration-fast);
+  --dur-base: var(--duration-base);
+  --ease:     var(--easing-standard);
+  --ease-spr: var(--easing-spring);
+
+  /* Portfolio-specific */
+  --blob-a: radial-gradient(circle at center, rgba(0,86,210,0.38) 0%, rgba(109,40,217,0.22) 55%, transparent 80%);
 }
 
-/* ---- Dark mode ---- */
-.dark{
-  /* Background — Deep Navy + Slate (Relevnt palette) */
-  --bg-a:#081020;   /* Deep Navy */
-  --bg-b:#0d1428;
-  --bg-c:#111830;
-  --bg-d:#0a1222;
+/* ─────────────────────────────────────────
+   DARK MODE — DS semantic overrides
+   Applied via .dark class (JS toggle).
+   ───────────────────────────────────────── */
+.dark {
+  /* Text */
+  --text-primary:   #f0f0f2;
+  --text-secondary: #b4b4bc;
+  --text-tertiary:  #78787f;
+  --text-disabled:  rgba(240,240,242,0.30);
 
-  /* Glass — Slate-tinted surfaces on Deep Navy */
-  --glass:        rgba(26,31,46,0.72);    /* Slate base */
-  --glass-strong: rgba(26,31,46,0.90);
-  --glass-tinted: rgba(26,31,46,0.60);
-  --glass-border: rgba(255,255,255,0.10);
-  --glass-rim:    rgba(255,255,255,0.14);
-  --glass-blur:   blur(48px) saturate(160%) brightness(1.02);
-  --glass-blur-md:blur(32px) saturate(140%) brightness(1.02);
-  --glass-blur-sm:blur(20px) saturate(130%) brightness(1.01);
+  /* Surfaces */
+  --surface-base:     rgba(26,31,46,0.72);
+  --surface-elevated: rgba(26,31,46,0.90);
+  --surface-overlay:  rgba(26,31,46,0.60);
+  --surface-solid:    var(--prim-navy-100);
+  --surface-inset:    rgba(255,255,255,0.04);
 
-  /* Shadows — deeper, dark-appropriate */
-  --glass-shd:
-    0 1px 0 0 rgba(255,255,255,0.09) inset,
-    0 -0.5px 0 0 rgba(0,0,0,0.60) inset,
-    0 20px 60px rgba(0,0,0,0.45),
-    0 1px 4px rgba(0,0,0,0.25);
-  --glass-shd-hover:
-    0 1px 0 0 rgba(255,255,255,0.12) inset,
-    0 -0.5px 0 0 rgba(0,0,0,0.60) inset,
-    0 32px 80px rgba(0,0,0,0.55),
-    0 2px 8px rgba(0,0,0,0.32);
-  --glass-shd-sm:
-    0 1px 0 0 rgba(255,255,255,0.08) inset,
-    0 8px 28px rgba(0,0,0,0.38),
-    0 1px 3px rgba(0,0,0,0.22);
+  /* Borders */
+  --border-default:  rgba(255,255,255,0.10);
+  --border-subtle:   rgba(255,255,255,0.09);
+  --border-faint:    rgba(255,255,255,0.05);
+  --border-strong:   rgba(255,255,255,0.12);
+  --border-brand:    rgba(77,148,255,0.26);
+  --border-focus:    var(--prim-indigo-400);
 
-  /* Prismatic iris — more subtle on dark */
-  --iris-grad: linear-gradient(90deg,
+  /* Brand */
+  --color-brand:        var(--prim-indigo-400);
+  --color-brand-dark:   var(--prim-indigo-300);
+  --color-brand-darker: var(--prim-indigo-400);
+  --color-brand-light:  rgba(77,148,255,0.16);
+
+  /* Backdrop blur — slightly less saturated on dark */
+  --blur-sm: blur(20px) saturate(130%) brightness(1.01);
+  --blur-md: blur(32px) saturate(140%) brightness(1.02);
+  --blur-lg: blur(48px) saturate(160%) brightness(1.02);
+
+  /* Shadows — dark-appropriate depth */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.20);
+  --shadow-sm: 0 1px 0 0 rgba(255,255,255,0.08) inset, 0 8px 28px rgba(0,0,0,0.38), 0 1px 3px rgba(0,0,0,0.22);
+  --shadow-md: 0 1px 0 0 rgba(255,255,255,0.09) inset, 0 -0.5px 0 0 rgba(0,0,0,0.60) inset, 0 20px 60px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.25);
+  --shadow-lg: 0 1px 0 0 rgba(255,255,255,0.12) inset, 0 32px 80px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.32);
+  --shadow-card:       0 2px 12px rgba(0,0,0,0.40), 0 1px 3px rgba(0,0,0,0.30);
+  --shadow-card-hover: 0 20px 56px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.35);
+  --shadow-focus:      0 0 0 3px rgba(77,148,255,0.28);
+
+  /* Shimmer — subtle on dark */
+  --shimmer-iris: linear-gradient(90deg,
     transparent 0%,
     rgba(255,255,255,0.08) 15%,
     rgba(150,160,255,0.12) 40%,
@@ -151,23 +296,26 @@
     transparent 100%
   );
 
-  /* Text — off-white hierarchy, lifted for dark bg contrast */
-  --text:   #f0f0f2;
-  --text-2: #b4b4bc;
-  --text-3: #78787f;
-
-  /* Accent — Indigo lifted for dark bg */
-  --indigo:        #4D94FF;           /* Indigo 400 — visible on dark */
-  --indigo-dark:   #7AB5FF;
-  --indigo-light:  rgba(77,148,255,0.16);
-  --indigo-border: rgba(77,148,255,0.26);
-
-  /* Borders */
-  --border:   rgba(255,255,255,0.09);
-  --border-s: rgba(255,255,255,0.05);
-
-  /* Blob — visible on dark */
+  /* Portfolio-specific dark overrides */
+  --bg-a: var(--prim-navy-950);
+  --bg-b: var(--prim-navy-900);
+  --bg-c: var(--prim-navy-800);
+  --bg-d: var(--prim-navy-700);
+  --glass-rim:  rgba(255,255,255,0.14);
+  --indigo-light: rgba(77,148,255,0.16);
   --blob-a: radial-gradient(circle at center, rgba(0,86,210,0.32) 0%, rgba(109,40,217,0.18) 55%, transparent 80%);
+}
+
+/* ─────────────────────────────────────────
+   REDUCED MOTION — DS kill-switch
+   Zeroes all durations via token override.
+   ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: var(--prim-dur-0);
+    --duration-base: var(--prim-dur-0);
+    --easing-spring: linear;
+  }
 }
 .dark .rword{
   background-image:linear-gradient(95deg,#7AB5FF 0%,#4D94FF 50%,#6ee7b7 100%);
@@ -262,7 +410,6 @@ body{
    LAYOUT
    ===================== */
 .wrap{position:relative;z-index:1;}
-:root{--cpad:48px;}
 .container{max-width:1080px;margin:0 auto;padding:0 var(--cpad);}
 
 /* =====================
@@ -436,7 +583,8 @@ body{
   font-size:11.5px;font-weight:500;
   letter-spacing:.12em;text-transform:uppercase;
   color:var(--text-3);
-  margin-bottom:32px;
+  margin-top:20px;
+  margin-bottom:28px;
 
   /* Tiny glass pill for the role label */
   background:var(--glass);
@@ -451,11 +599,11 @@ body{
 .hero-h1{
   font-family:'Atkinson Hyperlegible Next',sans-serif;
   font-size:clamp(44px,7vw,88px);
-  font-weight:400;                /* Apple Large Title = Regular */
-  line-height:1.08;               /* Apple Large Title leading: 41/34 ≈ 1.21 but display is tighter */
-  letter-spacing:-.024em;         /* Apple Large Title: -0.4pt/34pt = -0.012em; Atkinson is wide → -0.024 */
+  font-weight:400;
+  line-height:1.08;
+  letter-spacing:-.024em;
   max-width:960px;
-  margin-bottom:28px;
+  margin-bottom:0;
   color:var(--text);
 }
 .h1-static{display:block;}
@@ -1352,11 +1500,15 @@ body{
   background-image:none;
   -webkit-background-clip:unset;background-clip:unset;
   -webkit-text-fill-color:unset;
-  color:#15803d;
+  color:var(--text-primary);   /* default — no sentiment */
   margin-bottom:7px;
   font-variant-numeric:tabular-nums;
   position:relative;z-index:2;
 }
+/* Semantic stat colours via DS tokens */
+.stat-num[data-sentiment="positive"] { color:var(--color-success-text); }   /* green — growth */
+.stat-num[data-sentiment="reduction"] { color:var(--color-brand); }          /* indigo — reduction (down is good) */
+.stat-num[data-sentiment="scale"]    { color:var(--color-brand); }           /* indigo — reach/volume */
 .stat-lbl{
   font-size:10px;font-weight:600;
   letter-spacing:.07em;text-transform:uppercase;
@@ -1371,11 +1523,10 @@ body{
   letter-spacing:-.005em;
   position:relative;z-index:2;
 }
-.dark .stat-num{
-  background-image:none;
-  -webkit-text-fill-color:unset;
-  color:#4ade80;
-}
+.dark .stat-num{ color:var(--text-primary); }
+.dark .stat-num[data-sentiment="positive"]  { color:#4ade80; }
+.dark .stat-num[data-sentiment="reduction"] { color:var(--color-brand); }
+.dark .stat-num[data-sentiment="scale"]     { color:var(--color-brand); }
 .dark .stat-co{color:var(--text);}
 .stat-co a{
   color:inherit;text-decoration:none;
@@ -1834,52 +1985,56 @@ body::after{
   <div class="container">
     <section class="hero">
 
-      <p class="hero-role">
-        <span class="icon"><svg width="13" height="13"><use href="#ico-person"></use></svg></span>
-        Product Designer &nbsp;·&nbsp; B2C &amp; Enterprise &nbsp;·&nbsp; +10 yrs
-      </p>
-
+      <!-- Hero Headline -->
       <h1 class="hero-h1">
         <span class="h1-static">Designing</span>
         <span class="rw-wrap"><span class="rword" id="rw">revenue-driving</span></span>
         <span class="h1-static">experiences.</span>
       </h1>
 
+      <!-- Role Pill — context after the big statement -->
+      <p class="hero-role">
+        <span class="icon"><svg width="13" height="13"><use href="#ico-person"></use></svg></span>
+        Product Designer &nbsp;·&nbsp; B2C &amp; Enterprise
+      </p>
+
+      <!-- Hero Subtext -->
       <p class="hero-sub">
         +10 years turning <strong>complex problems</strong> into products people love — across B2C, enterprise, and everything in between.
       </p>
 
-      <!-- STAT GRID — impact numbers as visual centrepiece -->
+      <!-- Impact Stats Grid -->
       <div class="stat-grid">
         <div class="stat-cell">
-          <div class="stat-num"><span class="count-val" data-to="18" data-prefix="+" data-suffix="%">+18%</span></div>
-          <div class="stat-lbl">Checkout CVR</div>
+          <div class="stat-num" data-sentiment="positive"><span class="count-val" data-to="160" data-prefix="$" data-suffix="K">$160K</span></div>
+          <div class="stat-lbl">ACV</div>
           <div class="stat-co"><a href="https://www.coursera.org" target="_blank" rel="noopener">Coursera</a></div>
         </div>
         <div class="stat-cell">
-          <div class="stat-num">↓<span class="count-val" data-to="73" data-suffix="%">73%</span></div>
+          <div class="stat-num" data-sentiment="reduction">↓<span class="count-val" data-to="73" data-suffix="%">73%</span></div>
           <div class="stat-lbl">Chargebacks</div>
           <div class="stat-co"><a href="https://www.coursera.org" target="_blank" rel="noopener">Coursera</a></div>
         </div>
         <div class="stat-cell">
-          <div class="stat-num"><span class="count-val" data-to="100" data-suffix="M+">100M+</span></div>
+          <div class="stat-num" data-sentiment="scale"><span class="count-val" data-to="100" data-suffix="M+">100M+</span></div>
           <div class="stat-lbl">Users served</div>
           <div class="stat-co"><a href="https://www.olx.com" target="_blank" rel="noopener">OLX Autos</a></div>
         </div>
         <div class="stat-cell">
-          <div class="stat-num"><span class="count-val" data-to="27" data-prefix="+" data-suffix="%">+27%</span></div>
+          <div class="stat-num" data-sentiment="positive"><span class="count-val" data-to="27" data-prefix="+" data-suffix="%">+27%</span></div>
           <div class="stat-lbl">Dealer CVR</div>
           <div class="stat-co"><a href="https://www.cars24.com" target="_blank" rel="noopener">Cars24</a></div>
         </div>
       </div>
 
 
+      <!-- CTA Row — Primary + Secondary actions -->
       <div class="cta-row">
         <a class="cta-p" href="https://calendly.com/p-biswas188/15min" target="_blank">
           Let's grab coffee ☕
         </a>
         <a class="cta-s" href="https://www.linkedin.com/in/pb188/" target="_blank">
-          <!-- Official LinkedIn icon -->
+          <!-- LinkedIn icon -->
           <svg viewBox="0 0 24 24" width="16" height="16" fill="#0a66c2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           <span class="ul">LinkedIn</span>
         </a>
